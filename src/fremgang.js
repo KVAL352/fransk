@@ -3,7 +3,7 @@
 // Hvert spill har sin egen lagring (spill1, spill2).
 //
 // Regler (jo høyere boks, jo strengere):
-// - Opp fra boks 1 og 2: 1 riktig. Fra boks 3 og 4: 2 på rad.
+// - Opp fra boks 1, 2 og 3: 1 riktig. Fra boks 4: 2 på rad.
 // - Feil i boks 1 og 2: blir i boksen. Feil i boks 3 og 4: én boks ned.
 // - Boks 5: UTLAERT_REKKE riktige på rad = utlært. Feil nullstiller rekka, tallet blir i boks 5.
 // - Utlært er permanent (flagget laert). En feil på et utlært tall, f.eks. på et høyere nivå, teller bare som feil
@@ -12,9 +12,9 @@
 (function () {
   var MAKS_BOKS = 5;
   var VEKT = { 1: 16, 2: 8, 3: 4, 4: 2, 5: 1 };
-  var RIKTIGE_FOR_OPP = { 1: 1, 2: 1, 3: 2, 4: 2 };
+  var RIKTIGE_FOR_OPP = { 1: 1, 2: 1, 3: 1, 4: 2 };
   var NED_VED_FEIL = { 1: false, 2: false, 3: true, 4: true, 5: false };
-  var UTLAERT_REKKE = 4;
+  var UTLAERT_REKKE = 2;
   var MIN_ANDEL_LAERE = 0.7;
   // Utlærte tall fra tidligere nivåer trekkes sjeldnere jo flere nivåer som er gått: 0 nivåer bak = full vekt,
   // ett nivå bak = 0,25, to eller flere bak = 0,03.
