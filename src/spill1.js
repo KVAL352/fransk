@@ -3,6 +3,8 @@
 
 (function () {
   var SPILL = "spill1";
+  var t = window.Tekster.t;
+  window.Tekster.init();
   var nivaa = window.Nivaa.init(SPILL, document.getElementById("nivaa"));
   var MIN = nivaa.min;
   var MAKS = nivaa.maks;
@@ -43,11 +45,11 @@
   }
 
   function oppdaterTelling() {
-    tellingEl.textContent = forsok === 0 ? "" : riktige + " riktige av " + forsok + " denne gangen";
+    tellingEl.textContent = forsok === 0 ? "" : t("telling", { riktige: riktige, forsok: forsok });
   }
 
   document.getElementById("nullstill").addEventListener("click", function () {
-    if (!window.confirm("Nullstille all fremgang i dette spillet?")) return;
+    if (!window.confirm(t("bekreft.nullstill"))) return;
     window.Fremgang.nullstill(SPILL);
     window.location.reload();
   });
@@ -81,10 +83,10 @@
     if (erRiktig) {
       riktige++;
       tilbakemelding.className = "riktig";
-      tilbakemelding.textContent = "Riktig: " + tall + " = " + ord;
+      tilbakemelding.textContent = t("svar.riktig", { tall: tall, ord: ord });
     } else {
       tilbakemelding.className = "feil";
-      tilbakemelding.textContent = "Du skrev " + tekst + ". Riktig svar: " + tall + " = " + ord;
+      tilbakemelding.textContent = t("svar.feil1", { svar: tekst, tall: tall, ord: ord });
     }
     svarFelt.disabled = true;
     document.getElementById("sjekk").disabled = true;
@@ -96,8 +98,8 @@
     if (erFerdig && !varFerdig) {
       window.setTimeout(function () {
         window.Feiring.vis({
-          tittel: "Hurra! Du kan tallene fra " + MIN + " til " + MAKS,
-          tekst: "Alle tallene er utlært i dette spillet. Du kan terpe videre, eller gå videre til neste oppgave.",
+          tittel: t("feiring.tittel1", { min: MIN, maks: MAKS }),
+          tekst: t("feiring.tekst1"),
           videre: nivaa.videre,
           etterpaa: nesteKnapp
         });

@@ -161,7 +161,7 @@
 
     var terpe = document.createElement("button");
     terpe.type = "button";
-    terpe.textContent = "Fortsett å terpe";
+    terpe.textContent = window.Tekster.t("feiring.terpe");
     knapper.appendChild(terpe);
 
     if (valg.videre) {

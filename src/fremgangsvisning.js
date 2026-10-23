@@ -6,11 +6,8 @@
 
 (function () {
   var STIL_ID = "fv-stil";
-  var MILEPAELER = [
-    [25, "En firedel av veien."],
-    [50, "Halvveis."],
-    [75, "Tre firedeler. Snart i mål."]
-  ];
+  function T(nokkel, verdier) { return window.Tekster.t(nokkel, verdier); }
+  var MILEPAELER = [[25, "fv.m25"], [50, "fv.m50"], [75, "fv.m75"]];
 
   function leggInnStil() {
     if (document.getElementById(STIL_ID)) return;
@@ -59,7 +56,7 @@
 
     var rot = document.createElement("section");
     rot.className = "fv";
-    rot.setAttribute("aria-label", "Fremgang");
+    rot.setAttribute("aria-label", T("fv.etikett"));
 
     var topp = document.createElement("div");
     topp.className = "fv-topp";
@@ -75,14 +72,14 @@
     linje.setAttribute("role", "progressbar");
     linje.setAttribute("aria-valuemin", "0");
     linje.setAttribute("aria-valuemax", "100");
-    linje.setAttribute("aria-label", "Fremgang i spillet");
+    linje.setAttribute("aria-label", T("fv.linje"));
     var fyll = document.createElement("div");
     fyll.className = "fv-fyll";
     linje.appendChild(fyll);
     MILEPAELER.forEach(function (m) {
       var merke = document.createElement("span");
       merke.className = "fv-merke";
-      merke.style.left = m[0] + "%";
+      merke.style[window.Tekster.rtl() ? "right" : "left"] = m[0] + "%";
       linje.appendChild(merke);
     });
 
@@ -97,7 +94,7 @@
     ferdig.className = "fv-ferdig";
     var ferdigTittel = document.createElement("p");
     ferdigTittel.className = "fv-ferdig-tittel";
-    ferdigTittel.textContent = "Lært";
+    ferdigTittel.textContent = T("fv.laert");
     var ferdigRad = document.createElement("ol");
     ferdigRad.className = "fv-ferdig-rad";
     ferdig.appendChild(ferdigTittel);
@@ -150,9 +147,9 @@
       var mal = nede ? ferdigRad : rad;
       if (li.parentNode !== mal) settInn(mal, t);
       var teller = li.querySelector(".fv-teller");
-      teller.textContent = st.utlaert ? "lært" : st.boks === F.MAKS_BOKS ? st.rekke + " av " + st.krav : "";
-      li.setAttribute("aria-label", t + ": " + (st.utlaert ? "lært" :
-        "boks " + st.boks + " av 5" + (st.boks === F.MAKS_BOKS ? ", " + st.rekke + " av " + st.krav + " på rad" : "")));
+      teller.textContent = st.utlaert ? T("fv.laertKort") : st.boks === F.MAKS_BOKS ? T("fv.rekke", { rekke: st.rekke, krav: st.krav }) : "";
+      li.setAttribute("aria-label", st.utlaert ? T("fv.rute.laert", { tall: t }) :
+        T("fv.rute.boks", { tall: t, boks: st.boks }) + (st.boks === F.MAKS_BOKS ? T("fv.rute.rekke", { rekke: st.rekke, krav: st.krav }) : ""));
     }
 
     // Tegner alt på nytt fra lagringen og returnerer prosenten.
@@ -160,7 +157,7 @@
       var s = F.steg(spill, min, maks);
       var p = Math.floor(100 * s.gjort / s.totalt);
       prosentEl.textContent = p + " %";
-      igjenEl.textContent = s.igjen === 0 ? "Alle tallene er lært" : "minst " + s.igjen + " riktige svar igjen";
+      igjenEl.textContent = s.igjen === 0 ? T("fv.alleLaert") : T("fv.igjen", { n: s.igjen });
       fyll.style.transform = "scaleX(" + p / 100 + ")";
       linje.setAttribute("aria-valuenow", String(p));
       for (var t = min; t <= maks; t++) tegnRute(t);
@@ -213,10 +210,10 @@
       if (ferdig) return false;
       if (li && (opp || nyUtlaert)) marker(li, nyUtlaert);
       if (milepael) {
-        visMelding(milepael[1] + " " + p + " % av alle tallene.");
+        visMelding(T("fv.milepael", { melding: T(milepael[1]), p: p }));
         window.Feiring.milepaelLyd();
       } else if (nyUtlaert) {
-        visMelding(tall + " er lært!");
+        visMelding(T("fv.erLaert", { tall: tall }));
         window.Feiring.utlaertLyd();
       } else if (opp) {
         // Andel av veien fra forrige milepæl til neste (25, 50, 75, 100).

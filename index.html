@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="nb">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Fransk: lytt og skriv sifrene</title>
+<title data-t="side.tittel1">French: listen and type the digits</title>
 <style>
   body { font-family: system-ui, sans-serif; max-width: 32rem; margin: 2rem auto; padding: 0 1rem; line-height: 1.5; }
   button { font-size: 1.1rem; padding: .6rem 1.2rem; margin: .25rem .25rem .25rem 0; cursor: pointer; }
@@ -29,37 +29,38 @@
 </style>
 </head>
 <body>
-<h1>Lytt og skriv sifrene</h1>
+<h1 data-t="h1.spill1">Listen and type the digits</h1>
 <div id="nivaa"></div>
-<p>Lytt til tallet og skriv det med sifre.</p>
-<p class="liten" id="stemmeinfo">Leter etter fransk stemme...</p>
+<p data-t="intro.spill1">Listen to the number and type it with digits.</p>
+<p class="liten" id="stemmeinfo"></p>
 
 <div id="start">
-  <button id="startknapp">Start</button>
+  <button id="startknapp" data-t="knapp.start">Start</button>
 </div>
 
 <div id="spill" hidden>
   <p>
-    <button id="hor" type="button">Hør tallet</button>
+    <button id="hor" type="button" data-t="knapp.hor">Hear the number</button>
   </p>
   <form id="skjema" autocomplete="off">
-    <label for="svar">Tallet du hørte:</label><br>
+    <label for="svar" data-t="etikett.tall1">The number you heard:</label><br>
     <input id="svar" inputmode="numeric" pattern="[0-9]*" maxlength="3">
-    <button id="sjekk" type="submit">Sjekk</button>
+    <button id="sjekk" type="submit" data-t="knapp.sjekk">Check</button>
   </form>
   <div id="tilbakemelding" aria-live="polite"></div>
   <p>
-    <button id="horIgjen" type="button" hidden>Hør ordet igjen</button>
-    <button id="neste" type="button" hidden>Neste</button>
+    <button id="horIgjen" type="button" hidden data-t="knapp.horIgjen">Hear the word again</button>
+    <button id="neste" type="button" hidden data-t="knapp.neste">Next</button>
   </p>
   <p class="liten" id="telling"></p>
 </div>
 
 <div id="fremgang"></div>
-<p class="liten"><button id="nullstill" type="button">Nullstill fremgang</button></p>
+<p class="liten"><button id="nullstill" type="button" data-t="knapp.nullstill">Reset progress</button></p>
 
-<p class="liten"><a href="spill2.html">Spill 2: skriv tallet som ord</a></p>
+<p class="liten"><a href="spill2.html" data-t="lenke.spill2">Game 2: write the number as words</a></p>
 
+<script src="src/tekster.js"></script>
 <script src="src/tall.js"></script>
 <script src="src/stemme.js"></script>
 <script src="src/fremgang.js"></script>

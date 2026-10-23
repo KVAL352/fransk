@@ -48,8 +48,8 @@
 
   // Hva som kommer etter nivået i dette spillet: { href, tekst } eller null etter siste steg.
   function videre(spill, i) {
-    if (spill === "spill1") return { href: "spill2.html?nivaa=" + (i + 1), tekst: "Gå videre til spill 2, nivå " + (i + 1) };
-    if (i + 1 < NIVAAER.length) return { href: "index.html?nivaa=" + (i + 2), tekst: "Gå videre til spill 1, nivå " + (i + 2) };
+    if (spill === "spill1") return { href: "spill2.html?nivaa=" + (i + 1), tekst: window.Tekster.t("nivaa.videre1", { n: i + 1 }) };
+    if (i + 1 < NIVAAER.length) return { href: "index.html?nivaa=" + (i + 2), tekst: window.Tekster.t("nivaa.videre2", { n: i + 2 }) };
     return null;
   }
 
@@ -82,17 +82,17 @@
     var valgt = hent(spill);
     var gruppe = document.createElement("div");
     gruppe.setAttribute("role", "group");
-    gruppe.setAttribute("aria-label", "Nivå");
+    gruppe.setAttribute("aria-label", window.Tekster.t("nivaa.gruppe"));
     NIVAAER.forEach(function (n, i) {
       var knapp = document.createElement("button");
       knapp.type = "button";
       var apen = ledig(spill, i);
-      knapp.textContent = "Nivå " + (i + 1) + ": " + n.min + " til " + n.maks + (apen ? "" : " (låst)");
+      knapp.textContent = window.Tekster.t("nivaa.knapp", { n: i + 1, min: n.min, maks: n.maks }) + (apen ? "" : window.Tekster.t("nivaa.last"));
       knapp.setAttribute("aria-pressed", i === valgt ? "true" : "false");
       if (!apen) {
         knapp.disabled = true;
-        knapp.title = i === 0 || spill === "spill2" ? "Åpnes når nivå " + (i + 1) + " er ferdig i spill 1" :
-          "Åpnes når nivå " + i + " er ferdig i spill 2";
+        knapp.title = i === 0 || spill === "spill2" ? window.Tekster.t("nivaa.opnesSpill1", { n: i + 1 }) :
+          window.Tekster.t("nivaa.opnesSpill2", { n: i });
       }
       if (i === valgt) knapp.style.cssText = "background:#f5c400;border:2px solid #111;font-weight:700";
       knapp.addEventListener("click", function () {

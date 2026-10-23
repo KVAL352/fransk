@@ -15,17 +15,18 @@
     }
     stemme = finn("fr-be") || finn("fr-fr") || fr[0] || null;
     infoEl.textContent = stemme
-      ? "Stemme: " + stemme.name + " (" + stemme.lang + ")"
-      : "Fant ingen fransk stemme i denne nettleseren, så det blir ingen lyd. Prøv Chrome eller Edge, eller legg til fransk som språk i Windows.";
+      ? window.Tekster.t("stemme.valgt", { navn: stemme.name + " (" + stemme.lang + ")" })
+      : window.Tekster.t("stemme.ingen");
     infoEl.classList.toggle("feil", !stemme);
   }
 
   function init(infoEl) {
+    infoEl.textContent = window.Tekster.t("stemme.leter");
     if ("speechSynthesis" in window) {
       window.speechSynthesis.addEventListener("voiceschanged", function () { velgStemme(infoEl); });
       velgStemme(infoEl);
     } else {
-      infoEl.textContent = "Denne nettleseren har ikke taleopplæsing. Prøv Chrome eller Edge.";
+      infoEl.textContent = window.Tekster.t("stemme.ingenTale");
       infoEl.classList.add("feil");
     }
   }

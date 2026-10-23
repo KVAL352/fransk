@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="nb">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Fransk: skriv tallet som ord</title>
+<title data-t="side.tittel2">French: write the number as words</title>
 <style>
   body { font-family: system-ui, sans-serif; max-width: 32rem; margin: 2rem auto; padding: 0 1rem; line-height: 1.5; }
   button { font-size: 1.1rem; padding: .6rem 1.2rem; margin: .25rem .25rem .25rem 0; cursor: pointer; }
@@ -30,35 +30,36 @@
 </style>
 </head>
 <body>
-<h1>Skriv tallet som ord</h1>
+<h1 data-t="h1.spill2">Write the number as words</h1>
 <div id="nivaa"></div>
-<p>Se tallet og skriv det på fransk. Store og små bokstaver og bindestrek mot mellomrom spiller ingen rolle.</p>
-<p class="liten" id="stemmeinfo">Leter etter fransk stemme...</p>
+<p data-t="intro.spill2">Look at the number and write it in French. Capital letters and hyphens versus spaces do not matter.</p>
+<p class="liten" id="stemmeinfo"></p>
 
 <div id="start">
-  <button id="startknapp">Start</button>
+  <button id="startknapp" data-t="knapp.start">Start</button>
 </div>
 
 <div id="spill" hidden>
   <div id="tall" aria-live="polite"></div>
   <form id="skjema" autocomplete="off">
-    <label for="svar">Tallet som ord:</label><br>
-    <input id="svar" lang="fr" autocapitalize="off" spellcheck="false">
-    <p><button id="sjekk" type="submit">Sjekk</button></p>
+    <label for="svar" data-t="etikett.tall2">The number as words:</label><br>
+    <input id="svar" lang="fr" dir="ltr" autocapitalize="off" spellcheck="false">
+    <p><button id="sjekk" type="submit" data-t="knapp.sjekk">Check</button></p>
   </form>
   <div id="tilbakemelding" aria-live="polite"></div>
   <p>
-    <button id="hor" type="button" hidden>Hør ordet</button>
-    <button id="neste" type="button" hidden>Neste</button>
+    <button id="hor" type="button" hidden data-t="knapp.horOrd">Hear the word</button>
+    <button id="neste" type="button" hidden data-t="knapp.neste">Next</button>
   </p>
   <p class="liten" id="telling"></p>
 </div>
 
 <div id="fremgang"></div>
-<p class="liten"><button id="nullstill" type="button">Nullstill fremgang</button></p>
+<p class="liten"><button id="nullstill" type="button" data-t="knapp.nullstill">Reset progress</button></p>
 
-<p class="liten"><a href="index.html">Spill 1: lytt og skriv sifrene</a></p>
+<p class="liten"><a href="index.html" data-t="lenke.spill1">Game 1: listen and type the digits</a></p>
 
+<script src="src/tekster.js"></script>
 <script src="src/tall.js"></script>
 <script src="src/stemme.js"></script>
 <script src="src/fremgang.js"></script>
