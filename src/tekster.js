@@ -482,7 +482,7 @@
       ".sprak-boks ul{list-style:none;margin:0;padding:0;display:grid;gap:.5rem}" +
       ".sprak-boks li button{width:100%;margin:0;text-align:center;font-size:1.3rem;padding:.7rem 1rem;background:#fff;color:#111;border:2px solid #111;border-radius:8px}" +
       ".sprak-boks li button[aria-pressed=true]{background:#f5c400;font-weight:700}" +
-      ".sprak-lukk{margin:1rem 0 0;background:none;border:0;text-decoration:underline;font-size:1rem;padding:.3rem 0}" +
+      ".sprak-lukk{margin:1rem 0 0;background:none;color:#111;border:0;text-decoration:underline;font-size:1rem;padding:.3rem 0}" +
       "body{padding-top:2.4rem}" +
       // Fremgangskolonnen på bred skjerm er sticky; den skal stoppe under ikonet, ikke bak det.
       "@media (min-width:62rem){body>#fremgang{top:3.4rem;max-height:calc(100vh - 4.4rem)}}" +

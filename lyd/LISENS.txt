@@ -1,0 +1,102 @@
+Opptak: Lepticed7 m.fl., Lingua Libre via Wikimedia Commons, CC BY-SA 4.0.
+Ord	Fil på Commons	Lisens
+zéro	File:LL-Q150 (fra)-Lepticed7-zéro.wav	CC BY-SA 4.0
+un	File:LL-Q150 (fra)-Lepticed7-un.wav	CC BY-SA 4.0
+deux	File:LL-Q150 (fra)-Lepticed7-deux.wav	CC BY-SA 4.0
+trois	File:LL-Q150 (fra)-Lepticed7-trois.wav	CC BY-SA 4.0
+quatre	File:LL-Q150 (fra)-Lepticed7-quatre.wav	CC BY-SA 4.0
+cinq	File:LL-Q150 (fra)-Lepticed7-cinq.wav	CC BY-SA 4.0
+six	File:LL-Q150 (fra)-Lepticed7-six.wav	CC BY-SA 4.0
+sept	File:LL-Q150 (fra)-Lepticed7-sept.wav	CC BY-SA 4.0
+huit	File:LL-Q150 (fra)-Lepticed7-huit.wav	CC BY-SA 4.0
+neuf	File:LL-Q150 (fra)-Lepticed7-neuf.wav	CC BY-SA 4.0
+dix	File:LL-Q150 (fra)-Lepticed7-dix.wav	CC BY-SA 4.0
+onze	File:LL-Q150 (fra)-Lepticed7-onze.wav	CC BY-SA 4.0
+douze	File:LL-Q150 (fra)-Lepticed7-douze.wav	CC BY-SA 4.0
+treize	File:LL-Q150 (fra)-Lepticed7-treize.wav	CC BY-SA 4.0
+quatorze	File:LL-Q150 (fra)-Lepticed7-quatorze.wav	CC BY-SA 4.0
+quinze	File:LL-Q150 (fra)-Lepticed7-quinze.wav	CC BY-SA 4.0
+seize	File:LL-Q150 (fra)-Lepticed7-seize.wav	CC BY-SA 4.0
+dix-sept	File:LL-Q150 (fra)-Lepticed7-dix-sept.wav	CC BY-SA 4.0
+dix-huit	File:LL-Q150 (fra)-Lepticed7-dix-huit.wav	CC BY-SA 4.0
+dix-neuf	File:LL-Q150 (fra)-Lepticed7-dix-neuf.wav	CC BY-SA 4.0
+vingt	File:LL-Q150 (fra)-Lepticed7-vingt.wav	CC BY-SA 4.0
+vingt et un	File:LL-Q150 (fra)-Lepticed7-vingt et un.wav	CC BY-SA 4.0
+vingt-deux	File:LL-Q150 (fra)-Lepticed7-vingt-deux.wav	CC BY-SA 4.0
+vingt-trois	File:LL-Q150 (fra)-Lepticed7-vingt-trois.wav	CC BY-SA 4.0
+vingt-quatre	File:LL-Q150 (fra)-Lepticed7-vingt-quatre.wav	CC BY-SA 4.0
+vingt-cinq	File:LL-Q150 (fra)-Lepticed7-vingt-cinq.wav	CC BY-SA 4.0
+vingt-six	File:LL-Q150 (fra)-Lepticed7-vingt-six.wav	CC BY-SA 4.0
+vingt-sept	File:LL-Q150 (fra)-Lepticed7-vingt-sept.wav	CC BY-SA 4.0
+vingt-huit	File:LL-Q150 (fra)-Lepticed7-vingt-huit.wav	CC BY-SA 4.0
+vingt-neuf	File:LL-Q150 (fra)-Lepticed7-vingt-neuf.wav	CC BY-SA 4.0
+trente	File:LL-Q150 (fra)-Lepticed7-trente.wav	CC BY-SA 4.0
+trente et un	File:LL-Q150 (fra)-Lepticed7-trente et un.wav	CC BY-SA 4.0
+trente-deux	File:LL-Q150 (fra)-Lepticed7-trente-deux.wav	CC BY-SA 4.0
+trente-trois	File:LL-Q150 (fra)-Lepticed7-trente-trois.wav	CC BY-SA 4.0
+trente-quatre	File:LL-Q150 (fra)-Lepticed7-trente-quatre.wav	CC BY-SA 4.0
+trente-cinq	File:LL-Q150 (fra)-Lepticed7-trente-cinq.wav	CC BY-SA 4.0
+trente-six	File:LL-Q150 (fra)-Lepticed7-trente-six.wav	CC BY-SA 4.0
+trente-sept	File:LL-Q150 (fra)-Lepticed7-trente-sept.wav	CC BY-SA 4.0
+trente-huit	File:LL-Q150 (fra)-Lepticed7-trente-huit.wav	CC BY-SA 4.0
+trente-neuf	File:LL-Q150 (fra)-Lepticed7-trente-neuf.wav	CC BY-SA 4.0
+quarante	File:LL-Q150 (fra)-Lepticed7-quarante.wav	CC BY-SA 4.0
+quarante et un	File:LL-Q150 (fra)-Lepticed7-quarante et un.wav	CC BY-SA 4.0
+quarante-deux	File:LL-Q150 (fra)-Lepticed7-quarante-deux.wav	CC BY-SA 4.0
+quarante-trois	File:LL-Q150 (fra)-Lepticed7-quarante-trois.wav	CC BY-SA 4.0
+quarante-quatre	File:LL-Q150 (fra)-Lepticed7-quarante-quatre.wav	CC BY-SA 4.0
+quarante-cinq	File:LL-Q150 (fra)-Lepticed7-quarante-cinq.wav	CC BY-SA 4.0
+quarante-six	File:LL-Q150 (fra)-Lepticed7-quarante-six.wav	CC BY-SA 4.0
+quarante-sept	File:LL-Q150 (fra)-Lepticed7-quarante-sept.wav	CC BY-SA 4.0
+quarante-huit	File:LL-Q150 (fra)-Lepticed7-quarante-huit.wav	CC BY-SA 4.0
+quarante-neuf	File:LL-Q150 (fra)-Lepticed7-quarante-neuf.wav	CC BY-SA 4.0
+cinquante	File:LL-Q150 (fra)-Lepticed7-cinquante.wav	CC BY-SA 4.0
+cinquante-deux	File:LL-Q150 (fra)-Lepticed7-cinquante-deux.wav	CC BY-SA 4.0
+cinquante-trois	File:LL-Q150 (fra)-Lepticed7-cinquante-trois.wav	CC BY-SA 4.0
+cinquante-quatre	File:LL-Q150 (fra)-Lepticed7-cinquante-quatre.wav	CC BY-SA 4.0
+cinquante-cinq	File:LL-Q150 (fra)-Lepticed7-cinquante-cinq.wav	CC BY-SA 4.0
+cinquante-six	File:LL-Q150 (fra)-Lepticed7-cinquante-six.wav	CC BY-SA 4.0
+cinquante-sept	File:LL-Q150 (fra)-Lepticed7-cinquante-sept.wav	CC BY-SA 4.0
+cinquante-huit	File:LL-Q150 (fra)-Lepticed7-cinquante-huit.wav	CC BY-SA 4.0
+cinquante-neuf	File:LL-Q150 (fra)-Lepticed7-cinquante-neuf.wav	CC BY-SA 4.0
+soixante	File:LL-Q150 (fra)-Lepticed7-soixante.wav	CC BY-SA 4.0
+soixante-deux	File:LL-Q150 (fra)-Lepticed7-soixante-deux.wav	CC BY-SA 4.0
+soixante-trois	File:LL-Q150 (fra)-Lepticed7-soixante-trois.wav	CC BY-SA 4.0
+soixante-quatre	File:LL-Q150 (fra)-Lepticed7-soixante-quatre.wav	CC BY-SA 4.0
+soixante-cinq	File:LL-Q150 (fra)-Lepticed7-soixante-cinq.wav	CC BY-SA 4.0
+soixante-six	File:LL-Q150 (fra)-Lepticed7-soixante-six.wav	CC BY-SA 4.0
+soixante-sept	File:LL-Q150 (fra)-Lepticed7-soixante-sept.wav	CC BY-SA 4.0
+soixante-neuf	File:LL-Q150 (fra)-Lepticed7-soixante-neuf.wav	CC BY-SA 4.0
+septante	File:LL-Q150 (fra)-Lepticed7-septante.wav	CC BY-SA 4.0
+quatre-vingts	File:LL-Q150 (fra)-Lepticed7-quatre-vingts.wav	CC BY-SA 4.0
+quatre-vingt-un	File:LL-Q150 (fra)-Lepticed7-quatre-vingt-un.wav	CC BY-SA 4.0
+quatre-vingt-deux	File:LL-Q150 (fra)-Lepticed7-quatre-vingt-deux.wav	CC BY-SA 4.0
+quatre-vingt-trois	File:LL-Q150 (fra)-Lepticed7-quatre-vingt-trois.wav	CC BY-SA 4.0
+quatre-vingt-quatre	File:LL-Q150 (fra)-Lepticed7-quatre-vingt-quatre.wav	CC BY-SA 4.0
+quatre-vingt-cinq	File:LL-Q150 (fra)-Lepticed7-quatre-vingt-cinq.wav	CC BY-SA 4.0
+quatre-vingt-six	File:LL-Q150 (fra)-Lepticed7-quatre-vingt-six.wav	CC BY-SA 4.0
+quatre-vingt-sept	File:LL-Q150 (fra)-Lepticed7-quatre-vingt-sept.wav	CC BY-SA 4.0
+quatre-vingt-huit	File:LL-Q150 (fra)-Lepticed7-quatre-vingt-huit.wav	CC BY-SA 4.0
+quatre-vingt-neuf	File:LL-Q150 (fra)-Lepticed7-quatre-vingt-neuf.wav	CC BY-SA 4.0
+nonante	File:LL-Q150 (fra)-Lepticed7-nonante.wav	CC BY-SA 4.0
+nonante-cinq	LL-Q150 (fra)-XANA000-nonante-cinq.wav	CC0
+nonante-deux	LL-Q150 (fra)-XANA000-nonante-deux.wav	CC0
+nonante-huit	LL-Q150 (fra)-XANA000-nonante-huit.wav	CC0
+nonante-neuf	LL-Q150 (fra)-XANA000-nonante-neuf.wav	CC0
+nonante-quatre	LL-Q150 (fra)-XANA000-nonante-quatre.wav	CC0
+nonante-sept	LL-Q150 (fra)-XANA000-nonante-sept.wav	CC0
+nonante-six	LL-Q150 (fra)-XANA000-nonante-six.wav	CC0
+nonante-trois	LL-Q150 (fra)-XANA000-nonante-trois.wav	CC0
+septante-cinq	LL-Q150 (fra)-XANA000-septante-cinq.wav	CC0
+septante-deux	LL-Q150 (fra)-XANA000-septante-deux.wav	CC0
+septante-huit	LL-Q150 (fra)-XANA000-septante-huit.wav	CC0
+septante-neuf	LL-Q150 (fra)-XANA000-septante-neuf.wav	CC0
+septante-quatre	LL-Q150 (fra)-XANA000-septante-quatre.wav	CC0
+septante-sept	LL-Q150 (fra)-XANA000-septante-sept.wav	CC0
+septante-six	LL-Q150 (fra)-XANA000-septante-six.wav	CC0
+septante-trois	LL-Q150 (fra)-XANA000-septante-trois.wav	CC0
+soixante-huit	LL-Q150 (fra)-DSwissK-soixante-huit.wav	CC BY 4.0
+septante et un	LL-Q150 (fra)-Lepticed7-septante-et-un.wav	CC BY-SA 4.0
+nonante et un	LL-Q150 (fra)-Lepticed7-nonante-et-un.wav	CC BY-SA 4.0
+cinquante et un	LL-Q150 (fra)-Lepticed7-cinquante-et-un.wav	CC BY-SA 4.0
+soixante et un	LL-Q150 (fra)-Lepticed7-soixante-et-un.wav	CC BY-SA 4.0
