@@ -16,7 +16,8 @@
     stemme = finn("fr-be") || finn("fr-fr") || fr[0] || null;
     infoEl.textContent = stemme
       ? "Stemme: " + stemme.name + " (" + stemme.lang + ")"
-      : "Fant ingen fransk stemme. Lyden fungerer ikke før en fransk stemme er installert.";
+      : "Fant ingen fransk stemme i denne nettleseren, så det blir ingen lyd. Prøv Chrome eller Edge, eller legg til fransk som språk i Windows.";
+    infoEl.classList.toggle("feil", !stemme);
   }
 
   function init(infoEl) {
@@ -24,14 +25,17 @@
       window.speechSynthesis.addEventListener("voiceschanged", function () { velgStemme(infoEl); });
       velgStemme(infoEl);
     } else {
-      infoEl.textContent = "Denne nettleseren har ikke taleopplæsing. Bruk Chrome eller Edge.";
+      infoEl.textContent = "Denne nettleseren har ikke taleopplæsing. Prøv Chrome eller Edge.";
+      infoEl.classList.add("feil");
     }
   }
 
   function si(tekst) {
-    if (!("speechSynthesis" in window)) return;
+    // Uten fransk stemme leser nettleseren opp på standardspråket (engelsk), og da blir uttalen feil. Bedre med stillhet.
+    if (!("speechSynthesis" in window) || !stemme) return;
     var u = new SpeechSynthesisUtterance(tekst);
-    if (stemme) { u.voice = stemme; u.lang = stemme.lang; } else { u.lang = "fr-BE"; }
+    u.voice = stemme;
+    u.lang = stemme.lang;
     window.speechSynthesis.cancel();
     window.speechSynthesis.speak(u);
   }
