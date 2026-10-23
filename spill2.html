@@ -17,6 +17,11 @@
   h1 { font-size: 1.5rem; margin: 0 0 .5rem; }
   #nivaa button { font-size: .8rem; padding: .2rem .55rem; margin: 0 .2rem .2rem 0; }
   #nivaa { margin-bottom: .5rem; }
+  /* Smal skjerm: nivåknappene må være store nok for en tommel (ca. 44 px). */
+  @media (max-width: 30rem) {
+    #nivaa { display: flex; flex-wrap: wrap; gap: .4rem; }
+    #nivaa button { min-height: 2.75rem; padding: .3rem .8rem; margin: 0; }
+  }
   #nivaa + p { margin: 0 0 .25rem; }
   .fv { margin: .75rem 0 !important; }
   [hidden] { display: none; }

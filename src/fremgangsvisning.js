@@ -16,7 +16,7 @@
     s.textContent =
       ".fv{margin:1.5rem 0}" +
       ".fv-topp{display:flex;justify-content:space-between;align-items:baseline;gap:1rem;margin-bottom:.35rem}" +
-      ".fv-prosent{font-size:1.4rem;font-weight:700}" +
+      ".fv-prosent{font-size:1.4rem;font-weight:700;white-space:nowrap}" +
       ".fv-igjen{color:#555;font-size:.9rem}" +
       ".fv-linje{position:relative;height:14px;background:#ebe7dc;border:1px solid #111;border-radius:8px;overflow:hidden}" +
       ".fv-fyll{position:absolute;inset:0;background:#f5c400;transform-origin:left;transform:scaleX(0);transition:transform .4s cubic-bezier(0,0,.38,.9)}" +
