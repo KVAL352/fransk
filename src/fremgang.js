@@ -6,8 +6,9 @@
 // - Opp fra boks 1, 2 og 3: 1 riktig. Fra boks 4: 2 på rad.
 // - Feil i boks 1 og 2: blir i boksen. Feil i boks 3 og 4: én boks ned.
 // - Boks 5: UTLAERT_REKKE riktige på rad = utlært. Feil nullstiller rekka, tallet blir i boks 5.
-// - Streak: riktige svar på rad på tvers av tall (holdes av spillet) gir bonus. Fra 5 på rad teller et riktig svar
-//   dobbelt, fra 10 tredobbelt (vekt i registrer). Et tall kan likevel bare gå én boks opp per svar.
+// - Streak per tall: riktige svar på rad på samme tall (lagres i streak, en feil nullstiller) gir bonus når spillet
+//   ber om det (medBonus). Fra 3 på rad teller et riktig svar dobbelt, fra 5 tredobbelt. Et tall går likevel bare én
+//   boks opp per svar.
 // - Utlært er permanent (flagget laert). En feil på et utlært tall, f.eks. på et høyere nivå, teller bare som feil
 //   i statistikken og endrer ikke boks eller rekke.
 
@@ -89,27 +90,32 @@
 
   // Returnerer { fra, til, utlaert, mistet }: boksen før og etter, om tallet nå er utlært,
   // og om det nettopp mistet utlært-status.
-  function registrer(spill, tall, riktig, vekt) {
+  function registrer(spill, tall, riktig, vekt, medBonus) {
     vekt = Math.max(1, Math.floor(Number(vekt)) || 1);
     var data = les(spill);
     var rad = data[tall] || { boks: 1, riktig: 0, feil: 0 };
     var fra = boksFor(data, tall);
     var b = fra;
     var rekke = Number(rad.rekke) || 0;
+    var streak = Number(rad.streak) || 0;
     var varUtlaert = erUtlaert(data, tall);
     if (varUtlaert) {
       // Utlært blir utlært: boks og rekke røres ikke, uansett svar.
       rad.laert = true;
     } else if (riktig) {
+      streak++;
+      if (medBonus) vekt = bonus(streak);
       rekke += vekt;
       if (b < MAKS_BOKS && rekke >= RIKTIGE_FOR_OPP[b]) { b++; rekke = 0; }
       else if (b === MAKS_BOKS && rekke > UTLAERT_REKKE) rekke = UTLAERT_REKKE;
     } else {
+      streak = 0;
       if (NED_VED_FEIL[b]) b--;
       rekke = 0;
     }
     rad.boks = b;
     rad.rekke = rekke;
+    rad.streak = streak;
     rad.riktig = (Number(rad.riktig) || 0) + (riktig ? 1 : 0);
     rad.feil = (Number(rad.feil) || 0) + (riktig ? 0 : 1);
     data[tall] = rad;
@@ -117,7 +123,7 @@
     var utlaert = erUtlaert(data, tall);
     if (utlaert) rad.laert = true;
     skriv(spill, data);
-    return { fra: fra, til: b, utlaert: utlaert };
+    return { fra: fra, til: b, utlaert: utlaert, streak: streak, vekt: varUtlaert ? 1 : vekt };
   }
 
   function erUtlaert(data, tall) {
@@ -190,9 +196,9 @@
     return { gjort: gjort, totalt: totalt, igjen: totalt - gjort };
   }
 
-  // Vekten et riktig svar får etter så mange riktige på rad: 1, fra 5 to, fra 10 tre.
+  // Vekten et riktig svar får etter så mange riktige på rad på samme tall: 1, fra 3 to, fra 5 tre.
   function bonus(streak) {
-    return streak >= 10 ? 3 : streak >= 5 ? 2 : 1;
+    return streak >= 5 ? 3 : streak >= 3 ? 2 : 1;
   }
 
   function nullstill(spill) {

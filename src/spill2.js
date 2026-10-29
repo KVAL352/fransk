@@ -51,12 +51,12 @@
     svarFelt.focus();
   }
 
-  var streak = 0;
   var streakEl = document.getElementById("streak");
-  // Språkuavhengig: antall riktige på rad, og ×2 eller ×3 når bonus gjelder.
-  function visStreak(vekt) {
-    streakEl.textContent = streak < 2 ? "" : streak + (vekt > 1 ? " ×" + vekt : "");
-    streakEl.classList.toggle("bonus", vekt > 1);
+  // Språkuavhengig: tallet, hvor mange riktige på rad på det, og ×2 eller ×3 når bonus gjelder.
+  function visStreak(tall, resultat) {
+    var vis = resultat.streak >= 2 && !resultat.utlaert;
+    streakEl.textContent = vis ? tall + ": " + resultat.streak + (resultat.vekt > 1 ? " ×" + resultat.vekt : "") : "";
+    streakEl.classList.toggle("bonus", vis && resultat.vekt > 1);
   }
 
   function oppdaterTelling() {
@@ -88,10 +88,8 @@
     var ord = window.tallTilOrd(tall);
     var erRiktig = normaliser(tekst) === normaliser(ord);
     var varFerdig = window.Fremgang.alleUtlaert(SPILL, MIN, MAKS);
-    streak = erRiktig ? streak + 1 : 0;
-    var vekt = erRiktig ? window.Fremgang.bonus(streak) : 1;
-    var resultat = window.Fremgang.registrer(SPILL, tall, erRiktig, vekt);
-    visStreak(vekt);
+    var resultat = window.Fremgang.registrer(SPILL, tall, erRiktig, 1, true);
+    visStreak(tall, resultat);
     var erFerdig = window.Fremgang.alleUtlaert(SPILL, MIN, MAKS);
     if (erRiktig) {
       riktige++;
