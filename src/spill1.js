@@ -44,6 +44,14 @@
     si(window.tallTilOrd(tall));
   }
 
+  var streak = 0;
+  var streakEl = document.getElementById("streak");
+  // Språkuavhengig: antall riktige på rad, og ×2 eller ×3 når bonus gjelder.
+  function visStreak(vekt) {
+    streakEl.textContent = streak < 2 ? "" : streak + (vekt > 1 ? " ×" + vekt : "");
+    streakEl.classList.toggle("bonus", vekt > 1);
+  }
+
   function oppdaterTelling() {
     tellingEl.textContent = forsok === 0 ? "" : t("telling", { riktige: riktige, forsok: forsok });
   }
@@ -78,7 +86,10 @@
     var ord = window.tallTilOrd(tall);
     var erRiktig = Number(tekst) === tall;
     var varFerdig = window.Fremgang.alleUtlaert(SPILL, MIN, MAKS);
-    var resultat = window.Fremgang.registrer(SPILL, tall, erRiktig);
+    streak = erRiktig ? streak + 1 : 0;
+    var vekt = erRiktig ? window.Fremgang.bonus(streak) : 1;
+    var resultat = window.Fremgang.registrer(SPILL, tall, erRiktig, vekt);
+    visStreak(vekt);
     var erFerdig = window.Fremgang.alleUtlaert(SPILL, MIN, MAKS);
     if (erRiktig) {
       riktige++;

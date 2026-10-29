@@ -6,6 +6,8 @@
 // - Opp fra boks 1, 2 og 3: 1 riktig. Fra boks 4: 2 på rad.
 // - Feil i boks 1 og 2: blir i boksen. Feil i boks 3 og 4: én boks ned.
 // - Boks 5: UTLAERT_REKKE riktige på rad = utlært. Feil nullstiller rekka, tallet blir i boks 5.
+// - Streak: riktige svar på rad på tvers av tall (holdes av spillet) gir bonus. Fra 5 på rad teller et riktig svar
+//   dobbelt, fra 10 tredobbelt (vekt i registrer). Et tall kan likevel bare gå én boks opp per svar.
 // - Utlært er permanent (flagget laert). En feil på et utlært tall, f.eks. på et høyere nivå, teller bare som feil
 //   i statistikken og endrer ikke boks eller rekke.
 
@@ -87,7 +89,8 @@
 
   // Returnerer { fra, til, utlaert, mistet }: boksen før og etter, om tallet nå er utlært,
   // og om det nettopp mistet utlært-status.
-  function registrer(spill, tall, riktig) {
+  function registrer(spill, tall, riktig, vekt) {
+    vekt = Math.max(1, Math.floor(Number(vekt)) || 1);
     var data = les(spill);
     var rad = data[tall] || { boks: 1, riktig: 0, feil: 0 };
     var fra = boksFor(data, tall);
@@ -98,7 +101,7 @@
       // Utlært blir utlært: boks og rekke røres ikke, uansett svar.
       rad.laert = true;
     } else if (riktig) {
-      rekke++;
+      rekke += vekt;
       if (b < MAKS_BOKS && rekke >= RIKTIGE_FOR_OPP[b]) { b++; rekke = 0; }
       else if (b === MAKS_BOKS && rekke > UTLAERT_REKKE) rekke = UTLAERT_REKKE;
     } else {
@@ -187,6 +190,11 @@
     return { gjort: gjort, totalt: totalt, igjen: totalt - gjort };
   }
 
+  // Vekten et riktig svar får etter så mange riktige på rad: 1, fra 5 to, fra 10 tre.
+  function bonus(streak) {
+    return streak >= 10 ? 3 : streak >= 5 ? 2 : 1;
+  }
+
   function nullstill(spill) {
     try { window.localStorage.removeItem(nokkel(spill)); } catch (e) { /* ingenting å fjerne */ }
   }
@@ -194,7 +202,7 @@
   var api = {
     velgTall: velgTall, registrer: registrer, oversikt: oversikt, antallUtlaert: antallUtlaert,
     alleUtlaert: alleUtlaert, status: status, steg: steg, MAKS_BOKS: MAKS_BOKS,
-    oversiktTekst: oversiktTekst, nullstill: nullstill
+    oversiktTekst: oversiktTekst, nullstill: nullstill, bonus: bonus
   };
   if (typeof module !== "undefined" && module.exports) module.exports = api;
   if (typeof window !== "undefined") window.Fremgang = api;
