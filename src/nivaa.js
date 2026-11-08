@@ -49,7 +49,7 @@
   // Hva som kommer etter nivået i dette spillet: { href, tekst } eller null etter siste steg.
   function videre(spill, i) {
     if (spill === "spill1") return { href: "spill2.html?nivaa=" + (i + 1), tekst: window.Tekster.t("nivaa.videre1", { n: i + 1 }) };
-    if (i + 1 < NIVAAER.length) return { href: "index.html?nivaa=" + (i + 2), tekst: window.Tekster.t("nivaa.videre2", { n: i + 2 }) };
+    if (i + 1 < NIVAAER.length) return { href: "tall.html?nivaa=" + (i + 2), tekst: window.Tekster.t("nivaa.videre2", { n: i + 2 }) };
     return null;
   }
 

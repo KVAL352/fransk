@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title data-t="side.tittel1">French: listen and type the digits</title>
+<style>
+  body { font-family: system-ui, sans-serif; max-width: 32rem; margin: 2rem auto; padding: 0 1rem; line-height: 1.5; }
+  button { color: #111; font-size: 1.1rem; padding: .6rem 1.2rem; margin: .25rem .25rem .25rem 0; cursor: pointer; }
+  input { font-size: 2rem; width: 6rem; padding: .35rem; text-align: center; }
+  .liten { color: #555; font-size: .9rem; }
+  #tilbakemelding { min-height: 2.75rem; margin-top: .5rem; font-size: 1.1rem; }
+  .riktig { color: #1b6e2d; }
+  .feil { color: #a12020; }
+  /* Kompakt topp: nivåknappene skal ikke dytte spillet og fremgangen ned. */
+  h1 { font-size: 1.5rem; margin: 0 0 .5rem; }
+  #nivaa button { font-size: .8rem; padding: .2rem .55rem; margin: 0 .2rem .2rem 0; }
+  #nivaa { margin-bottom: .5rem; }
+  /* Smal skjerm: nivåknappene må være store nok for en tommel (ca. 44 px). */
+  @media (max-width: 30rem) {
+    #nivaa { display: flex; flex-wrap: wrap; gap: .4rem; }
+    #nivaa button { min-height: 2.75rem; padding: .3rem .8rem; margin: 0; }
+  }
+  #nivaa + p { margin: 0 0 .25rem; }
+  .fv { margin: .75rem 0 !important; }
+  [hidden] { display: none; }
+  /* Bred skjerm: fremgangen står i en egen kolonne ved siden av spillet, så den er synlig mens du spiller. */
+  @media (min-width: 62rem) {
+    body { max-width: 58.5rem; display: grid; grid-template-columns: 26rem 1fr; column-gap: 2.5rem; align-items: start; }
+    body > * { grid-column: 1; }
+    body > #fremgang { grid-column: 2; grid-row: 1 / span 30; position: sticky; top: 1rem; max-height: calc(100vh - 2rem); overflow-y: auto; }
+    #fremgang .fv { margin-top: 0; }
+  }
+  #streak { min-height: 1.5em; margin: 0.25rem 0; font-weight: 600; }
+  #streak.bonus { color: #0a6b2d; }
+</style>
+</head>
+<body>
+<h1 data-t="h1.spill1">Listen and type the digits</h1>
+<div id="nivaa"></div>
+<p data-t="intro.spill1">Listen to the number and type it with digits.</p>
+<p class="liten" id="stemmeinfo"></p>
+
+<div id="start">
+  <button id="startknapp" data-t="knapp.start">Start</button>
+</div>
+
+<div id="spill" hidden>
+  <p>
+    <button id="hor" type="button" data-t="knapp.hor">Hear the number</button>
+  </p>
+  <form id="skjema" autocomplete="off">
+    <label for="svar" data-t="etikett.tall1">The number you heard:</label><br>
+    <input id="svar" inputmode="numeric" pattern="[0-9]*" maxlength="3">
+    <button id="sjekk" type="submit" data-t="knapp.sjekk">Check</button>
+  </form>
+  <div id="tilbakemelding" aria-live="polite"></div>
+  <p>
+    <button id="horIgjen" type="button" hidden data-t="knapp.horIgjen">Hear the word again</button>
+    <button id="neste" type="button" hidden data-t="knapp.neste">Next</button>
+  </p>
+  <p class="liten" id="telling"></p>
+  <p id="streak" aria-live="polite"></p>
+</div>
+
+<div id="fremgang"></div>
+<p class="liten"><button id="nullstill" type="button" data-t="knapp.nullstill">Reset progress</button></p>
+
+<p class="liten"><a href="spill2.html" data-t="lenke.spill2">Game 2: write the number as words</a></p>
+
+<script src="src/tekster.js"></script>
+<script src="src/tall.js"></script>
+<script src="src/stemme.js"></script>
+<script src="src/fremgang.js"></script>
+<script src="src/nivaa.js"></script>
+<script src="src/feiring.js"></script>
+<script src="src/fremgangsvisning.js"></script>
+<script src="src/spill1.js"></script>
+</body>
+</html>
