@@ -1,0 +1,20 @@
+slug	ord	fil	lisens	opphav	side
+eclair	éclair	Pistachio_eclair_-_Milfey_Patisserie_2026-03-02.jpg	CC0	Andy Li	https://commons.wikimedia.org/wiki/File:Pistachio_eclair_-_Milfey_Patisserie_2026-03-02.jpg
+beurre	beurre	Butter_block.JPG	Public domain	Meanos	https://commons.wikimedia.org/wiki/File:Butter_block.JPG
+baguette	baguette	Baguettes_-_stonesoup.jpg	CC BY 2.0	jules / stonesoup	https://commons.wikimedia.org/wiki/File:Baguettes_-_stonesoup.jpg
+pain	pain	Fresh_made_bread_05.jpg	CC BY-SA 4.0	FranHogan	https://commons.wikimedia.org/wiki/File:Fresh_made_bread_05.jpg
+cafe	café	Espresso_Coffee_01.jpg	CC0	Jubair1985	https://commons.wikimedia.org/wiki/File:Espresso_Coffee_01.jpg
+the	thé	Cup_of_tea_isolated_on_white_background_-_Petr_Kratochvil.jpg	CC0	Petr Kratochvil	https://commons.wikimedia.org/wiki/File:Cup_of_tea_isolated_on_white_background_-_Petr_Kratochvil.jpg
+biere	bière	Glass_beer_mug_full.jpg	CC BY 4.0	AxtImHause	https://commons.wikimedia.org/wiki/File:Glass_beer_mug_full.jpg
+noix	noix	Walnuts_-_whole_and_open_with_halved_kernel.jpg	CC BY-SA 4.0	Ivar Leidus	https://commons.wikimedia.org/wiki/File:Walnuts_-_whole_and_open_with_halved_kernel.jpg
+monnaie	monnaie	Various_euro_coins.jpg	CC BY-SA 3.0	Lewis Ronald	https://commons.wikimedia.org/wiki/File:Various_euro_coins.jpg
+table	table	Table_et_bancs02.jpg	CC BY-SA 3.0	Lionel Allorge	https://commons.wikimedia.org/wiki/File:Table_et_bancs02.jpg
+appartement	appartement	Pink_apartment_building_facade,_Rio_de_Janeiro.jpg	CC0	Wilfredor	https://commons.wikimedia.org/wiki/File:Pink_apartment_building_facade%2C_Rio_de_Janeiro.jpg
+ecole	école	High_school_building_exterior_is_pictured_in_a_town_or_city_landscape.jpg	CC0	Johny Rebel, the Explorer Panda	https://commons.wikimedia.org/wiki/File:High_school_building_exterior_is_pictured_in_a_town_or_city_landscape.jpg
+heure	heure	Roman_numerals_on_alarm_clock_(Unsplash).jpg	CC0	Ales Krivec	https://commons.wikimedia.org/wiki/File:Roman_numerals_on_alarm_clock_(Unsplash).jpg
+vent	vent	United_States_Airport_Windsock_at_66G_Airport,_Frankenmuth,_MI.jpg	CC0	Mrmanssss	https://commons.wikimedia.org/wiki/File:United_States_Airport_Windsock_at_66G_Airport%2C_Frankenmuth%2C_MI.jpg
+tram	arrêt de tram	1f68b.svg	CC BY 4.0	Twemoji (Twitter, Inc. og andre bidragsytere)	https://github.com/jdecked/twemoji
+enfant	enfant	1f9d2.svg	CC BY 4.0	Twemoji (Twitter, Inc. og andre bidragsytere)	https://github.com/jdecked/twemoji
+ciel	ciel	2601.svg	CC BY 4.0	Twemoji (Twitter, Inc. og andre bidragsytere)	https://github.com/jdecked/twemoji
+chance	chance	1f340.svg	CC BY 4.0	Twemoji (Twitter, Inc. og andre bidragsytere)	https://github.com/jdecked/twemoji
+rdv	rendez-vous	1f4c5.svg	CC BY 4.0	Twemoji (Twitter, Inc. og andre bidragsytere)	https://github.com/jdecked/twemoji

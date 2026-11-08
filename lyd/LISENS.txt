@@ -100,3 +100,22 @@ septante et un	LL-Q150 (fra)-Lepticed7-septante-et-un.wav	CC BY-SA 4.0
 nonante et un	LL-Q150 (fra)-Lepticed7-nonante-et-un.wav	CC BY-SA 4.0
 cinquante et un	LL-Q150 (fra)-Lepticed7-cinquante-et-un.wav	CC BY-SA 4.0
 soixante et un	LL-Q150 (fra)-Lepticed7-soixante-et-un.wav	CC BY-SA 4.0
+éclair	LL-Q150 (fra)-Poslovitch-éclair.wav	CC0
+beurre	LL-Q150 (fra)-WikiLucas00-beurre.wav	CC BY-SA 4.0
+baguette	LL-Q150 (fra)-Lepticed7-baguette.wav	CC BY-SA 4.0
+pain	LL-Q150 (fra)-Axel toualy-pain.wav	CC0
+café	LL-Q150 (fra)-Lepticed7-café.wav	CC BY-SA 4.0
+thé	LL-Q150 (fra)-Poslovitch-thé.wav	CC0
+bière	LL-Q150 (fra)-Lepticed7-bière.wav	CC BY-SA 4.0
+noix	LL-Q150 (fra)-Lepticed7-noix.wav	CC BY-SA 4.0
+monnaie	LL-Q150 (fra)-Poslovitch-monnaie.wav	CC0
+table	LL-Q150 (fra)-Poslovitch-table.wav	CC0
+appartement	LL-Q150 (fra)-Lepticed7-appartement.wav	CC BY-SA 4.0
+école	LL-Q150 (fra)-Origamimi38-école.wav	CC0
+heure	LL-Q150 (fra)-Poslovitch-heure.wav	CC0
+vent	LL-Q150 (fra)-Poslovitch-vent.wav	CC0
+arrêt de tram	LL-Q150 (fra)-Poslovitch-tram.wav	CC0
+enfant	LL-Q150 (fra)-Poslovitch-enfant.wav	CC0
+ciel	LL-Q150 (fra)-Poslovitch-ciel.wav	CC0
+chance	LL-Q150 (fra)-Helenou66-chance.wav	CC0
+rendez-vous	LL-Q150 (fra)-LoquaxFR-rendez-vous.wav	CC BY-SA 4.0
