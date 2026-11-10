@@ -223,7 +223,67 @@
     return p[(variant || 0) % p.length] + " …";
   }
 
-  var api = { horOppgave: horOppgave, horDeler: horDeler, lydDeler: lydDeler, regelHopp: regelHopp, idIRegel: idIRegel, NIVAER: NIVAER, PERSONER: PERSONER, REGLER: REGLER, LISTE: LISTE, BETYDNING: BETYDNING, hent: hent,
+  // Pakker: et utvalg verb med egne nivåer etter person (høstpakken, se PLAN-host.md). Pakken får egne id-er 1..n,
+  // sammenhengende per nivå, så Fremgang kan bruke min og maks. Funksjonene oversetter id-en til grunnlistas id.
+  var PAKKER = {
+    host: {
+      verb: ["habiter", "parler", "porter", "aimer", "tomber", "manger", "adorer", "écouter"],
+      personer: [[0, 1, 2], [3, 4, 5]],
+      nivaaTekst: [
+        { nb: "je, tu, il og elle", en: "je, tu, il and elle" },
+        { nb: "nous, vous, ils og elles", en: "nous, vous, ils and elles" },
+      ],
+    },
+  };
+
+  function pakke(navn) {
+    var p = PAKKER[navn];
+    var grunn = [];
+    var liste = [];
+    var nivaer = [];
+    var infinitiver = VERB.map(function (v) { return v[0]; });
+    p.personer.forEach(function (gruppe, gi) {
+      var min = liste.length + 1;
+      p.verb.forEach(function (verb) {
+        var vi = infinitiver.indexOf(verb);
+        gruppe.forEach(function (pi) {
+          var o = JSON.parse(JSON.stringify(LISTE[vi * 6 + pi]));
+          grunn.push(o.id);
+          o.id = liste.length + 1;
+          o.nivaa = gi + 1;
+          liste.push(o);
+        });
+      });
+      nivaer.push({ nivaa: gi + 1, min: min, maks: liste.length, nb: p.nivaaTekst[gi].nb, en: p.nivaaTekst[gi].en });
+    });
+    var betyd = {};
+    p.verb.forEach(function (v) { betyd[v] = BETYDNING[v]; });
+    function b(id) { return grunn[id - 1]; }
+    return {
+      navn: navn, NIVAER: nivaer, PERSONER: PERSONER, REGLER: REGLER, LISTE: liste, BETYDNING: betyd,
+      grunnId: b,
+      hent: function (id) { return liste[id - 1] || null; },
+      fasit: function (id, v) { return fasit(b(id), v); },
+      oppgave: function (id, v) { return oppgave(b(id), v); },
+      oversatt: function (id, s, v) { return oversatt(b(id), s, v); },
+      alternativer: function (id, v) { return alternativer(b(id), v); },
+      vurder: function (svar, id, v) { return vurder(svar, b(id), v); },
+      lydDeler: function (id, v) { return lydDeler(b(id), v); },
+      horDeler: function (id, v) { return horDeler(b(id), v); },
+      horOppgave: function (id, v) { return horOppgave(b(id), v); },
+      verbINivaa: function (n) {
+        var ut = [];
+        liste.forEach(function (o) { if (o.nivaa === n && ut.indexOf(o.verb) < 0) ut.push(o.verb); });
+        return ut;
+      },
+      idIRegel: function (n, regel) {
+        return liste.filter(function (o) { return o.nivaa === n && o.regel === regel; }).map(function (o) { return o.id; });
+      },
+      betydning: betydning, regelHopp: regelHopp,
+    };
+  }
+
+  var api = { pakke: pakke, horOppgave: horOppgave, horDeler: horDeler, lydDeler: lydDeler, regelHopp: regelHopp, idIRegel: idIRegel, NIVAER: NIVAER, PERSONER: PERSONER, REGLER: REGLER, LISTE: LISTE, BETYDNING: BETYDNING, hent: hent,
     fasit: fasit, oppgave: oppgave, oversatt: oversatt, alternativer: alternativer, verbINivaa: verbINivaa,
     betydning: betydning, vurder: vurder };
   if (typeof window !== "undefined") window.Verb = api;

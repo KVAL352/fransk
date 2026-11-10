@@ -4,9 +4,12 @@
 // andre feil viser riktig svar og regelen. Rett første forsøk teller i fremgangen. Fremgang per oppgave i Leitner-bokser (src/fremgang.js).
 
 (function () {
-  var SPILL = "spill8";
+  // ?pakke=host: verbtrinnet i høstpakken (8 verb, nivå etter person, egen fremgang). Se PLAN-host.md.
+  var PAKKE = null;
+  try { PAKKE = new URLSearchParams(window.location.search).get("pakke") === "host" ? "host" : null; } catch (e) { PAKKE = null; }
+  var SPILL = PAKKE ? "hostverb" : "spill8";
   window.Tekster.init();
-  var V = window.Verb;
+  var V = PAKKE ? window.Verb.pakke(PAKKE) : window.Verb;
   var t = window.Tekster.t;
   var t3 = window.Tekster3.t;
   // Nivået hun er på: det første som ikke er utlært. Er alle fire ferdige, er NIVAA null og alle 66 formene blandes.
@@ -17,6 +20,7 @@
   var FERDIG_REKKE = 3; // så mange riktige på rad (første forsøk) på samme form og formen er ferdig, uansett boks
   var HOR_BOKS = 4; // fra og med denne boksen er hver andre skriveoppgave hør og skriv (formen spilles, pronomenet skjules)
   var SKRIVE_BOKS = 3; // fra og med denne boksen skriver hun svaret selv
+  var FERDIG_ANDEL = 0.95; // minst 95 % av trekkene går til former som ikke er ferdige, så ferdige kommer veldig sjelden
 
   // Tekster for dette spillet. Andre språk enn norsk viser engelsk.
   var TEKST = {
@@ -32,6 +36,7 @@
       feiringTekst: "Neste nivå er: {hva}.",
       feiringSist: "Du har lært alle fire nivåene. Nå får du alle formene blandet.",
       videreHost: "Videre til høstord",
+      tilNeste: "Til neste nivå",
       bekreft: "Nullstille fremgangen i dette spillet?",
       betydSporsmal: "Hva betyr verbet?",
       betydRiktig: "Riktig!",
@@ -73,6 +78,7 @@
       feiringTekst: "The next level is: {hva}.",
       feiringSist: "You have learned all four levels. Now you get all the forms mixed together.",
       videreHost: "On to autumn words",
+      tilNeste: "On to the next level",
       bekreft: "Reset progress in this game?",
       betydSporsmal: "What does the verb mean?",
       betydRiktig: "Correct!",
@@ -103,6 +109,24 @@
       regelnavn_avoir: "avoir"
     }
   };
+  // Høstpakken: to nivåer og tilbake til stien i stedet for menyen.
+  var TEKST_PAKKE = {
+    nb: {
+      tittel: "Fransk: høstverb",
+      introAlle: "Begge nivåene er lært. Nå blandes alle formene.",
+      feiringSist: "Du har lært begge nivåene. Trinn 2, høstord, er åpent.",
+      videreHost: "Tilbake til høstpakken",
+      lenkeMeny: "Til høstpakken"
+    },
+    en: {
+      tittel: "French: autumn verbs",
+      introAlle: "Both levels are learned. Now all the forms are mixed.",
+      feiringSist: "You have learned both levels. Step 2, autumn words, is open.",
+      videreHost: "Back to the autumn pack",
+      lenkeMeny: "Back to the autumn pack"
+    }
+  };
+  if (PAKKE) ["nb", "en"].forEach(function (s) { Object.keys(TEKST_PAKKE[s]).forEach(function (k) { TEKST[s][k] = TEKST_PAKKE[s][k]; }); });
   var SPRAK = window.Tekster.kode() === "nb" ? "nb" : "en";
   function s8(nokkel, verdier) {
     var tekst = TEKST[SPRAK][nokkel];
@@ -116,6 +140,8 @@
   $("h1").textContent = s8("tittel");
   $("intro").textContent = s8("intro");
   $("menyLenke").textContent = s8("lenkeMeny");
+  if (PAKKE) $("menyLenke").href = "hostpakke.html";
+  var VIDERE_HREF = PAKKE ? "hostpakke.html" : "spill9.html";
   $("kredittLenke").textContent = s8("kreditt");
 
   var kortEl = $("kort");
@@ -296,7 +322,7 @@
     } else {
       betydVerb = null;
       if (runde) { nr = runde.ids[runde.i]; runde.i++; }
-      else nr = window.Fremgang.velgTall(SPILL, MIN, MAKS, forrige);
+      else nr = window.Fremgang.velgTall(SPILL, MIN, MAKS, forrige, null, null, FERDIG_ANDEL);
       forrige = nr;
       variant = Math.random() < 0.5 ? 0 : 1;
       var boks = window.Fremgang.status(SPILL, nr).boks;
@@ -367,7 +393,7 @@
   }
 
   // Mønsterhopp: viser hun at hun kan en regel (4 på rad, minst 2 verb), løftes resten av regelen i nivået til boks 3.
-  var NOKKEL_REGEL = "fransk.verbregel";
+  var NOKKEL_REGEL = PAKKE ? "fransk.verbregel." + PAKKE : "fransk.verbregel";
   function regelHopp(riktigForsteGang) {
     var o = V.hent(nr);
     var hist = null;
@@ -442,7 +468,10 @@
         window.Feiring.vis({
           tittel: s8("feiringTittel", { n: ferdigNivaa.nivaa }),
           tekst: neste ? s8("feiringTekst", { hva: neste[SPRAK] }) : s8("feiringSist"),
-          videre: neste ? null : { tekst: s8("videreHost"), href: "spill9.html" }, etterpaa: nesteKnapp
+          videre: neste ? null : { tekst: s8("videreHost"), href: VIDERE_HREF }, etterpaa: nesteKnapp,
+          // Hovedknappen åpner neste nivå med en gang (ønsket av Kjersti 2026-11-10), ikke «fortsett å terpe».
+          knapp: neste ? s8("tilNeste") : null,
+          vedLukk: function () { if (neste && nivaaKlart) nesteKnapp.click(); }
         });
       }, 900);
     }
@@ -601,7 +630,8 @@
     window.Fremgang.nullstill(SPILL);
     window.Svakhet.nullstill(SPILL);
     try { window.localStorage.removeItem(NOKKEL_REGEL); } catch (e) { /* ingenting å fjerne */ }
-    try { window.localStorage.removeItem(NOKKEL_KJENT); } catch (e) { /* ingenting å fjerne */ }
+    // Hva verbene betyr deles med spill 8, så pakken nullstiller ikke det.
+    if (!PAKKE) { try { window.localStorage.removeItem(NOKKEL_KJENT); } catch (e) { /* ingenting å fjerne */ } }
     window.location.reload();
   });
 })();

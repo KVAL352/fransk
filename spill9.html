@@ -118,6 +118,7 @@
   @keyframes inn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
   @keyframes stempel { 0% { transform: scale(1); } 40% { transform: scale(1.02); } 100% { transform: scale(1); } }
   @keyframes lås { 0% { transform: scale(.9); } 60% { transform: scale(1.12); } 100% { transform: none; } }
+  .lastlenke { display: inline-block; padding: .55rem 1.2rem; border: 2px solid var(--svart); border-radius: 6px; background: var(--svart); color: #fff; text-decoration: none; }
 </style>
 </head>
 <body>
@@ -125,6 +126,11 @@
   <h1 id="h1"></h1>
   <div class="kart" id="kart" role="list"></div>
   <p class="temalinje" id="temalinje"></p>
+
+  <div id="last" hidden>
+    <p id="lastTekst"></p>
+    <a href="hostpakke.html" id="lastLenke" class="lastlenke"></a>
+  </div>
 
   <div id="start">
     <p id="intro"></p>
@@ -152,7 +158,7 @@
   </div>
 
   <div class="under">
-    <a href="index.html" id="menyLenke"></a>
+    <a href="hostpakke.html" id="menyLenke"></a>
     <button id="nullstill" type="button" data-t="knapp.nullstill">Reset progress</button>
     <a href="kreditt.html#bilder" id="kredittLenke"></a>
   </div>
@@ -167,6 +173,8 @@
 <script src="src/stemme.js"></script>
 <script src="src/fremgang.js"></script>
 <script src="src/feiring.js"></script>
+<script src="src/verb.js"></script>
+<script src="src/hostpakke.js"></script>
 <script src="src/spill9.js"></script>
 </body>
 </html>

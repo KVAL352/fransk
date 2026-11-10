@@ -54,8 +54,11 @@
 
   // tilfeldig er valgfri (for testing): funksjon som gir et tall i [0, 1).
   // grenser er valgfri: øvre grense for hvert nivå, f.eks. [10, 20, 50, 69, 99]. Uten den skaleres ingenting ned.
-  function velgTall(spill, min, maks, forrige, tilfeldig, grenser) {
+  // minAndel er valgfri: hvor stor del av trekkene som minst skal gå til tall som ikke er utlært (standard 0,7).
+  // Verbene bruker 0,95, så ferdige former kommer igjen veldig sjelden (ønsket av Kjersti 2026-11-10).
+  function velgTall(spill, min, maks, forrige, tilfeldig, grenser, minAndel) {
     var rnd = tilfeldig || Math.random;
+    var andel = minAndel || MIN_ANDEL_LAERE;
     var data = les(spill);
     var kandidater = [];
     var sum = 0;
@@ -75,8 +78,8 @@
     var laereSum = 0;
     kandidater.forEach(function (k) { if (!k.utlaert) laereSum += k.vekt; });
     var ferdigSum = sum - laereSum;
-    if (laereSum > 0 && ferdigSum > 0 && laereSum < ferdigSum * MIN_ANDEL_LAERE / (1 - MIN_ANDEL_LAERE)) {
-      var faktor = ferdigSum * MIN_ANDEL_LAERE / (1 - MIN_ANDEL_LAERE) / laereSum;
+    if (laereSum > 0 && ferdigSum > 0 && laereSum < ferdigSum * andel / (1 - andel)) {
+      var faktor = ferdigSum * andel / (1 - andel) / laereSum;
       kandidater.forEach(function (k) { if (!k.utlaert) k.vekt *= faktor; });
       sum = ferdigSum + laereSum * faktor;
     }

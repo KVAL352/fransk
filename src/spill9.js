@@ -48,7 +48,10 @@
       feiringNeste: "Til neste tema: {neste}",
       feiringBland: "Bland alle ordene",
       ordFerdig: "{ord} er ferdig",
-      lenkeMeny: "Til menyen",
+      lenkeMeny: "Til høstpakken",
+      lastTekst: "Høstord åpnes når du er ferdig med verbene i høstpakken.",
+      lastLenke: "Til høstpakken",
+      viderePakke: "Tilbake til høstpakken",
       kreditt: "Kreditt for bilder og lyd",
       bekreft: "Nullstille fremgangen i dette spillet?"
     },
@@ -79,7 +82,10 @@
       feiringNeste: "On to the next theme: {neste}",
       feiringBland: "Mix all the words",
       ordFerdig: "{ord} is done",
-      lenkeMeny: "Back to the menu",
+      lenkeMeny: "Back to the autumn pack",
+      lastTekst: "Autumn words open when you have finished the verbs in the autumn pack.",
+      lastLenke: "Back to the autumn pack",
+      viderePakke: "Back to the autumn pack",
       kreditt: "Picture and audio credits",
       bekreft: "Reset progress in this game?"
     }
@@ -340,7 +346,7 @@
         window.Feiring.vis({
           tittel: s9("feiringTittel", { tema: temaNavn(ferdigTema) }),
           tekst: neste ? s9("feiringTekst", { neste: temaNavn(neste) }) : s9("feiringSist"),
-          videre: null, etterpaa: nesteKnapp,
+          videre: neste ? null : { tekst: s9("viderePakke"), href: "hostpakke.html" }, etterpaa: nesteKnapp,
           knapp: neste ? s9("feiringNeste", { neste: temaNavn(neste) }) : s9("feiringBland"),
           vedLukk: function () { if (temaKlart) nesteKnapp.click(); }
         });
@@ -413,6 +419,19 @@
     window.Fremgang.nullstill(SPILL);
     window.location.reload();
   });
+
+  // Trinn 2 i høstpakken: låst til verbtrinnet er ferdig. ?test=1 hopper over låsen.
+  var test = false;
+  try { test = new URLSearchParams(window.location.search).get("test") === "1"; } catch (e) { test = false; }
+  if (!test && !window.HostPakke.verbFerdig()) {
+    $("start").hidden = true;
+    $("kart").hidden = true;
+    $("temalinje").hidden = true;
+    $("last").hidden = false;
+    $("lastTekst").textContent = s9("lastTekst");
+    $("lastLenke").textContent = s9("lastLenke");
+    return;
+  }
 
   startTema(testTema() || finnTema());
 })();
