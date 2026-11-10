@@ -119,3 +119,102 @@ enfant	LL-Q150 (fra)-Poslovitch-enfant.wav	CC0
 ciel	LL-Q150 (fra)-Poslovitch-ciel.wav	CC0
 chance	LL-Q150 (fra)-Helenou66-chance.wav	CC0
 rendez-vous	LL-Q150 (fra)-LoquaxFR-rendez-vous.wav	CC BY-SA 4.0
+parle	LL-Q150 (fra)-Poslovitch-parle.wav	CC0
+parles	LL-Q150 (fra)-Poslovitch-parles.wav	CC0
+parlons	LL-Q150 (fra)-Poslovitch-parlons.wav	CC0
+parlez	LL-Q150 (fra)-Poslovitch-parlez.wav	CC0
+parlent	LL-Q150 (fra)-Poslovitch-parlent.wav	CC0
+porte	LL-Q150 (fra)-Mecanautes-porte.wav	CC0
+portes	LL-Q150 (fra)-Poslovitch-portes.wav	CC0
+portons	LL-Q150 (fra)-Poslovitch-portons.wav	CC0
+portez	LL-Q150 (fra)-Poslovitch-portez.wav	CC0
+portent	LL-Q150 (fra)-Poslovitch-portent.wav	CC0
+tombe	LL-Q150 (fra)-Lepticed7-tombe.wav	CC BY-SA 4.0
+tombes	LL-Q150 (fra)-Poslovitch-tombes.wav	CC0
+tombons	LL-Q150 (fra)-Poslovitch-tombons.wav	CC0
+tombez	LL-Q150 (fra)-Poslovitch-tombez.wav	CC0
+tombent	LL-Q150 (fra)-Poslovitch-tombent.wav	CC0
+habite	LL-Q150 (fra)-Poslovitch-habite.wav	CC0
+habites	LL-Q150 (fra)-Poslovitch-habites.wav	CC0
+habitons	LL-Q150 (fra)-Lyokoï-habitons.wav	CC BY-SA 4.0
+habitez	LL-Q150 (fra)-Lyokoï-habitez.wav	CC BY-SA 4.0
+habitent	LL-Q150 (fra)-Poslovitch-habitent.wav	CC0
+aime	LL-Q150 (fra)-Poslovitch-aime.wav	CC0
+aimes	LL-Q150 (fra)-Poslovitch-aimes.wav	CC0
+aimons	LL-Q150 (fra)-Poslovitch-aimons.wav	CC0
+aimez	LL-Q150 (fra)-Poslovitch-aimez.wav	CC0
+aiment	LL-Q150 (fra)-Poslovitch-aiment.wav	CC0
+adores	LL-Q150 (fra)-Lyokoï-adores.wav	CC BY-SA 4.0
+adorons	LL-Q150 (fra)-Lyokoï-adorons.wav	CC BY-SA 4.0
+adorez	LL-Q150 (fra)-Lyokoï-adorez.wav	CC BY-SA 4.0
+adorent	LL-Q150 (fra)-Lyokoï-adorent.wav	CC BY-SA 4.0
+écoute	LL-Q150 (fra)-Pamputt-écoute.wav	CC0
+écoutes	LL-Q150 (fra)-Pamputt-écoutes.wav	CC0
+écoutons	LL-Q150 (fra)-Pamputt-écoutons.wav	CC0
+écoutez	LL-Q150 (fra)-Pamputt-écoutez.wav	CC0
+écoutent	LL-Q150 (fra)-Pamputt-écoutent.wav	CC0
+mange	LL-Q150 (fra)-Pamputt-mange.wav	CC0
+manges	LL-Q150 (fra)-Pamputt-manges.wav	CC0
+mangeons	LL-Q150 (fra)-Pamputt-mangeons.wav	CC0
+mangez	LL-Q150 (fra)-Pamputt-mangez.wav	CC0
+mangent	LL-Q150 (fra)-Pamputt-mangent.wav	CC0
+appelle	LL-Q150 (fra)-Poslovitch-appelle.wav	CC0
+appelles	LL-Q150 (fra)-Poslovitch-appelles.wav	CC0
+appelons	LL-Q150 (fra)-Poslovitch-appelons.wav	CC0
+appelez	LL-Q150 (fra)-Poslovitch-appelez.wav	CC0
+appellent	LL-Q150 (fra)-Poslovitch-appellent.wav	CC0
+suis	LL-Q150 (fra)-Poslovitch-suis.wav	CC0
+es	LL-Q150 (fra)-Poslovitch-es.wav	CC0
+est	LL-Q150 (fra)-WikiLucas00-est.wav	CC BY-SA 4.0
+sommes	LL-Q150 (fra)-Poslovitch-sommes.wav	CC0
+êtes	LL-Q150 (fra)-Poslovitch-êtes.wav	CC0
+sont	LL-Q150 (fra)-Poslovitch-sont.wav	CC0
+ai	LL-Q150 (fra)-Poslovitch-ai.wav	CC0
+avons	LL-Q150 (fra)-Poslovitch-avons.wav	CC0
+avez	LL-Q150 (fra)-Poslovitch-avez.wav	CC0
+ont	LL-Q150 (fra)-Poslovitch-ont.wav	CC0
+je	LL-Q150 (fra)-Loizbec-je.wav	CC0
+tu	LL-Q150 (fra)-Yug-tu.wav	CC0
+il	LL-Q150 (fra)-XANA000-il.wav	CC0
+elle	LL-Q150 (fra)-Poslovitch-elle.wav	CC0
+nous	LL-Q150 (fra)-Poslovitch-nous.wav	CC0
+vous	LL-Q150 (fra)-Lepticed7-vous.wav	CC BY-SA 4.0
+ils	LL-Q150 (fra)-Poslovitch-ils.wav	CC0
+elles	LL-Q150 (fra)-Poslovitch-elles.wav	CC0
+pluie	LL-Q150 (fra)-Lepticed7-pluie.wav	CC BY-SA 4.0
+soleil	LL-Q150 (fra)-Lepticed7-soleil.wav	CC BY-SA 4.0
+nuage	LL-Q150 (fra)-Lepticed7-nuage.wav	CC BY-SA 4.0
+brouillard	LL-Q150 (fra)-Lepticed7-brouillard.wav	CC BY-SA 4.0
+orage	LL-Q150 (fra)-Poslovitch-orage.wav	CC0
+froid	LL-Q150 (fra)-XANA000-froid.wav	CC0
+arbres	LL-Q150 (fra)-0x010C-arbres.wav	CC BY-SA 4.0
+feuille	LL-Q150 (fra)-Lepticed7-feuille.wav	CC BY-SA 4.0
+forêt	LL-Q150 (fra)-Lepticed7-forêt.wav	CC BY-SA 4.0
+montagne	LL-Q150 (fra)-Lepticed7-montagne.wav	CC BY-SA 4.0
+champ	LL-Q150 (fra)-Lepticed7-champ.wav	CC BY-SA 4.0
+chemin	LL-Q150 (fra)-Mecanautes-chemin.wav	CC0
+rivière	LL-Q150 (fra)-Lepticed7-rivière.wav	CC BY-SA 4.0
+gants	LL-Q150 (fra)-LightD31-gants.wav	CC BY-SA 4.0
+bottes	LL-Q150 (fra)-Aemines1-bottes.wav	CC BY-SA 4.0
+manteau	LL-Q150 (fra)-Poslovitch-manteau.wav	CC0
+écharpe	LL-Q150 (fra)-Poslovitch-écharpe.wav	CC0
+bonnet	LL-Q150 (fra)-Lepticed7-bonnet.wav	CC BY-SA 4.0
+pull	LL-Q150 (fra)-LoquaxFR-pull.wav	CC BY-SA 4.0
+parapluie	LL-Q150 (fra)-Poslovitch-parapluie.wav	CC0
+renard	LL-Q150 (fra)-Poslovitch-renard.wav	CC0
+écureuil	LL-Q150 (fra)-LoquaxFR-écureuil.wav	CC BY-SA 4.0
+hérisson	LL-Q150 (fra)-Poslovitch-hérisson.wav	CC0
+cerf	LL-Q150 (fra)-Poslovitch-cerf.wav	CC0
+hibou	LL-Q150 (fra)-Poslovitch-hibou.wav	CC0
+oiseau	LL-Q150 (fra)-Poslovitch-oiseau.wav	CC0
+sanglier	LL-Q150 (fra)-Lepticed7-sanglier.wav	CC BY-SA 4.0
+citrouille	LL-Q150 (fra)-Lepticed7-citrouille.wav	CC BY-SA 4.0
+pomme	LL-Q150 (fra)-Lepticed7-pomme.wav	CC BY-SA 4.0
+poire	LL-Q150 (fra)-Lepticed7-poire.wav	CC BY-SA 4.0
+champignons	LL-Q150 (fra)-0x010C-champignons.wav	CC BY-SA 4.0
+raisin	LL-Q150 (fra)-Poslovitch-raisin.wav	CC0
+poêle	LL-Q150 (fra)-Lepticed7-poêle.wav	CC BY-SA 4.0
+casserole	LL-Q150 (fra)-Lepticed7-casserole.wav	CC BY-SA 4.0
+cuillère	LL-Q150 (fra)-Poslovitch-cuillère.wav	CC0
+tarte	LL-Q150 (fra)-Poslovitch-tarte.wav	CC0
+confiture	LL-Q150 (fra)-Lepticed7-confiture.wav	CC BY-SA 4.0

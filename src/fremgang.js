@@ -187,6 +187,11 @@
     };
   }
 
+  // Riktige svar på rad på ett tall (nullstilles av en feil). Til kortlinjen i spill 8.
+  function streakFor(spill, tall) {
+    return Number((les(spill)[tall] || {}).streak) || 0;
+  }
+
   // Fremgang for hele spillet: { gjort, totalt, igjen } i riktige svar.
   function steg(spill, min, maks) {
     var data = les(spill);
@@ -205,9 +210,33 @@
     try { window.localStorage.removeItem(nokkel(spill)); } catch (e) { /* ingenting å fjerne */ }
   }
 
+  // Løfter et tall til minst gitt boks (aldri ned), uten å røre utlærte. Brukes når spillet har sett
+  // at hun kan en hel regel (spill 8). Returnerer true hvis tallet ble flyttet.
+  function loftTil(spill, tall, boks) {
+    var data = les(spill);
+    if (erUtlaert(data, tall) || boksFor(data, tall) >= boks) return false;
+    var rad = data[tall] || { boks: 1, riktig: 0, feil: 0 };
+    rad.boks = Math.min(boks, MAKS_BOKS);
+    rad.rekke = 0;
+    data[tall] = rad;
+    skriv(spill, data);
+    return true;
+  }
+
+  // Gjør et tall utlært med en gang (boks 5, flagget laert). Brukes når spillet har sett nok riktige på rad (spill 8).
+  function fullfor(spill, tall) {
+    var data = les(spill);
+    var rad = data[tall] || { boks: 1, riktig: 0, feil: 0 };
+    rad.boks = MAKS_BOKS;
+    rad.rekke = UTLAERT_REKKE;
+    rad.laert = true;
+    data[tall] = rad;
+    skriv(spill, data);
+  }
+
   var api = {
-    velgTall: velgTall, registrer: registrer, oversikt: oversikt, antallUtlaert: antallUtlaert,
-    alleUtlaert: alleUtlaert, status: status, steg: steg, MAKS_BOKS: MAKS_BOKS,
+    fullfor: fullfor, loftTil: loftTil, velgTall: velgTall, registrer: registrer, oversikt: oversikt, antallUtlaert: antallUtlaert,
+    alleUtlaert: alleUtlaert, status: status, streakFor: streakFor, steg: steg, MAKS_BOKS: MAKS_BOKS,
     oversiktTekst: oversiktTekst, nullstill: nullstill, bonus: bonus
   };
   if (typeof module !== "undefined" && module.exports) module.exports = api;

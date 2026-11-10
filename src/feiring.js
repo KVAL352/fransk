@@ -140,7 +140,8 @@
     }, 2200);
   }
 
-  // valg: { tittel, tekst, videre: { tekst, href } | null, etterpaa: element å sette fokus på ved lukking }
+  // valg: { tittel, tekst, videre: { tekst, href } | null, etterpaa: element å sette fokus på ved lukking,
+  //         knapp: tekst på hovedknappen (standard «fortsett å terpe»), vedLukk: funksjon som kjøres når dialogen lukkes }
   function vis(valg) {
     leggInnStil();
     var bak = document.createElement("div");
@@ -161,7 +162,7 @@
 
     var terpe = document.createElement("button");
     terpe.type = "button";
-    terpe.textContent = window.Tekster.t("feiring.terpe");
+    terpe.textContent = valg.knapp || window.Tekster.t("feiring.terpe");
     knapper.appendChild(terpe);
 
     if (valg.videre) {
@@ -181,6 +182,7 @@
       document.removeEventListener("keydown", taste);
       if (bak.parentNode) bak.parentNode.removeChild(bak);
       if (valg.etterpaa) valg.etterpaa.focus();
+      if (valg.vedLukk) valg.vedLukk();
     }
     function taste(e) {
       if (e.key === "Escape") lukk();

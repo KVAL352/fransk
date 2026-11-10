@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>French: verbs</title>
+<style>
+  /* Skala: 0.875 (meta) · 1.125 (tekst, knapper) · 1.5 (svarvalg) · 2.5 (oppgaven). */
+  :root {
+    --svart: #1c1c1a; --papir: #ecebe6; --kort: #f8f7f3; --linje: #c9c6bd; --dempet: #55524b;
+    --rod: #b3261e; --gull: #f6c945; --nivaa: #1c1c1a;
+    --inn: cubic-bezier(0,0,.38,.9); --standard: cubic-bezier(.2,0,.38,.9);
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--papir); color: var(--svart); font-family: system-ui, sans-serif; font-size: 1.125rem; line-height: 1.5; }
+  button { font: inherit; color: var(--svart); cursor: pointer; }
+  [hidden] { display: none !important; }
+  .side { max-width: 32rem; margin: 0 auto; padding: 1.5rem 16px 3rem; }
+  h1 { font-size: 1.125rem; margin: 0 0 1rem; }
+
+  /* Samlet fremgang: ett felt per nivå, bredde etter antall former */
+  .topp { margin-bottom: 2rem; }
+  .topp-tekst { display: flex; justify-content: space-between; gap: 1rem; font-size: .875rem; color: var(--dempet); margin-bottom: .4rem; }
+  .topp-tekst strong { color: var(--svart); font-weight: 600; }
+  .nivaaer { display: flex; gap: 4px; height: 10px; }
+  .nivaa { position: relative; border: 1px solid var(--svart); border-radius: 3px; background: #e2e0d8; overflow: hidden; }
+  .nivaa.na { outline: 2px solid var(--svart); outline-offset: 2px; }
+  .nivaa i { position: absolute; inset: 0; background: var(--svart); transform-origin: left; transform: scaleX(0); transition: transform .4s var(--standard); }
+  .nivaa.na i { background: var(--nivaa) !important; }
+
+  /* Ett kort per spørsmål. Nivåfargen er stripen øverst (nivå 4 er flaggstripen). */
+  .kort { position: relative; background: var(--kort); border: 2px solid var(--svart); border-radius: 8px; padding: 1.25rem 1.25rem 1.5rem; transition: background-color .24s var(--inn), border-color .24s var(--inn); }
+  .kort::before { content: ""; position: absolute; left: -2px; right: -2px; top: -2px; height: 8px; background: var(--nivaa); border-radius: 8px 8px 0 0; }
+  .kort.ferdig::before { display: none; }
+  .kort.ferdig { background-color: var(--gull); }
+  .kort.ferdig .hjelp { color: inherit; opacity: .85; }
+  .pa-rad, .kort.ferdig { background-image: linear-gradient(110deg, transparent 40%, rgba(255,255,255,.55) 50%, transparent 60%); background-size: 250% 100%; background-position: 120% 0; background-repeat: no-repeat; }
+
+  .formlinje { position: relative; height: 8px; margin-top: .5rem; border: 1px solid var(--svart); border-radius: 3px; background: #e2e0d8; overflow: hidden; }
+  .formlinje i { position: absolute; inset: 0; background: var(--nivaa); transform-origin: left; transform: scaleX(0); transition: transform .3s var(--standard), background-color .3s var(--standard); }
+  .kort.ferdig .formlinje i { background: var(--svart); }
+  .pa-rad { position: absolute; top: -.9rem; right: 1rem; margin: 0; padding: .15rem .7rem; border: 2px solid var(--svart); border-radius: 6px; background-color: var(--gull); color: var(--svart); font-size: .875rem; font-weight: 700; opacity: 0; pointer-events: none; transition: opacity .2s var(--inn); }
+  .pa-rad.vis { opacity: 1; }
+
+  .oppgave { font-size: 2.5rem; font-weight: 700; line-height: 1.1; margin: 1.25rem 0 .25rem; }
+  .oppgave.instruks { font-size: 1.5rem; line-height: 1.3; }
+  .hjelp { color: var(--dempet); margin: 0 0 1.25rem; }
+  .hor { display: block; margin: -.5rem 0 1rem; padding: .35rem .9rem; border: 2px solid var(--svart); border-radius: 6px; background: #fff; }
+
+  .valg { display: flex; flex-direction: column; gap: .5rem; }
+  .valg button { font-size: 1.5rem; text-align: start; padding: .55rem 1rem; background: #fff; border: 2px solid var(--linje); border-radius: 6px; }
+  .valg button:disabled { cursor: default; }
+  .valg button.riktig { border-color: var(--svart); background: var(--gull); }
+  .valg button.feil { border-color: var(--rod); background: var(--kort); color: var(--rod); }
+  .skriv { display: flex; gap: .5rem; }
+  .skriv input { flex: 1; min-width: 0; font: inherit; font-size: 1.5rem; padding: .4rem .6rem; border: 2px solid var(--linje); border-radius: 6px; background: #fff; }
+  .skriv input.galt { border-color: var(--rod); background: var(--kort); color: var(--rod); }
+  .skriv input.rett { border-color: var(--svart); background: var(--gull); }
+  .skriv input:disabled { opacity: 1; }
+  .skriv button, .handling button { padding: .55rem 1.2rem; border: 2px solid var(--svart); border-radius: 6px; background: #fff; }
+  .valg button:focus-visible, .handling button:focus-visible, .skriv button:focus-visible, .hor:focus-visible, .skriv input:focus-visible { outline: 3px solid var(--svart); outline-offset: 2px; }
+  .kort.riktig-blink { border-color: var(--svart); }
+  .skjult { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+  /* Svaret: én linje, regelen bare ved feil */
+  .svar { margin-top: 1rem; min-height: 1.7em; }
+  .svar p { margin: 0; }
+  .svar .feil { color: var(--rod); font-weight: 600; }
+  .svar .regel { color: var(--dempet); margin-top: .35rem; }
+
+  .handling { display: flex; gap: .5rem; margin-top: 1rem; }
+  .handling .neste { background: var(--svart); color: #fff; margin-left: auto; }
+
+  .under { margin-top: 2.5rem; font-size: .875rem; color: var(--dempet); display: flex; justify-content: space-between; gap: 1rem; }
+  .under a, .under button { color: var(--dempet); font-size: .875rem; background: none; border: 0; padding: 0; text-decoration: underline; }
+
+  #start button, #svakKnapp { padding: .55rem 1.2rem; border: 2px solid var(--svart); border-radius: 6px; background: var(--svart); color: #fff; }
+  #svak h2 { font-size: 1.5rem; margin: 0 0 .5rem; }
+  .liten { color: var(--dempet); font-size: .875rem; }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .kort.inn { animation: inn .2s var(--inn); }
+    .pa-rad.vis { animation: merke .35s var(--inn), glans .9s var(--standard) .2s both; }
+    .kort.ferdig { animation: stempel .4s var(--inn), glans 1.1s var(--standard) .3s both; }
+    .kort.riktig-blink { animation: stempel .3s var(--inn); }
+  }
+  @keyframes glans { from { background-position: 120% 0; } to { background-position: -20% 0; } }
+  @keyframes merke { 0% { transform: translateY(6px) scale(.8); } 60% { transform: translateY(0) scale(1.12); } 100% { transform: none; } }
+  @keyframes inn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+  @keyframes stempel { 0% { transform: scale(1); } 40% { transform: scale(1.02); } 100% { transform: scale(1); } }
+</style>
+</head>
+<body>
+<div class="side">
+  <h1 id="h1"></h1>
+
+  <div id="start">
+    <p id="intro"></p>
+    <button id="startknapp" type="button" data-t="knapp.start">Start</button>
+  </div>
+
+  <div id="spill" hidden>
+    <header class="topp">
+      <span id="nivaaTekst" class="skjult"></span>
+      <div class="nivaaer" role="img" id="nivaaLinje"></div>
+    </header>
+
+    <article class="kort" id="kort" aria-live="polite">
+      <div class="formlinje" id="formlinje" role="progressbar" aria-valuemin="0" aria-valuemax="100"><i id="formfyll"></i></div>
+      <p class="pa-rad" id="paRad"></p>
+      <p class="oppgave" id="oppgave" lang="fr"></p>
+      <p class="hjelp" id="hjelp"></p>
+      <button type="button" class="hor" id="hor" hidden></button>
+      <div class="valg" id="valg" lang="fr"></div>
+      <form class="skriv" id="skjema" autocomplete="off" hidden>
+        <input id="svar" type="text" lang="fr" dir="ltr" autocapitalize="off" autocomplete="off" spellcheck="false" aria-labelledby="oppgave">
+        <button id="sjekk" type="submit" data-t="knapp.sjekk">Check</button>
+      </form>
+      <div class="svar" id="tilbakemelding"></div>
+    </article>
+
+    <div class="handling">
+      <button type="button" class="neste" id="neste" hidden data-t="knapp.neste">Next</button>
+    </div>
+  </div>
+
+  <div id="svak" hidden>
+    <h2 id="svakTittel"></h2>
+    <p id="svakIntro"></p>
+    <p id="svakRegel"></p>
+    <div id="svakEksempler"></div>
+    <p><button id="svakKnapp" type="button"></button></p>
+  </div>
+
+  <div class="under">
+    <a href="index.html" id="menyLenke"></a>
+    <button id="nullstill" type="button" data-t="knapp.nullstill">Reset progress</button>
+    <a href="kreditt.html" id="kredittLenke"></a>
+  </div>
+  <p id="stemmeinfo" hidden></p>
+</div>
+
+<script src="src/tekster.js"></script>
+<script src="src/tekster3.js"></script>
+<script src="src/sjekk.js"></script>
+<script src="src/stemme.js"></script>
+<script src="src/verb.js"></script>
+<script src="src/fremgang.js"></script>
+<script src="src/svakhet.js"></script>
+<script src="src/feiring.js"></script>
+<script src="src/spill8.js"></script>
+</body>
+</html>

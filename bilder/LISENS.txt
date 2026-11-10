@@ -18,3 +18,41 @@ enfant	enfant	1f9d2.svg	CC BY 4.0	Twemoji (Twitter, Inc. og andre bidragsytere)	
 ciel	ciel	2601.svg	CC BY 4.0	Twemoji (Twitter, Inc. og andre bidragsytere)	https://github.com/jdecked/twemoji
 chance	chance	1f340.svg	CC BY 4.0	Twemoji (Twitter, Inc. og andre bidragsytere)	https://github.com/jdecked/twemoji
 rdv	rendez-vous	1f4c5.svg	CC BY 4.0	Twemoji (Twitter, Inc. og andre bidragsytere)	https://github.com/jdecked/twemoji
+host-vent	vent	1f4a8.svg	CC BY 4.0	Twemoji (Twitter, Inc. og andre bidragsytere)	https://github.com/jdecked/twemoji
+pluie	pluie	1f327.svg	CC BY 4.0	Twemoji (Twitter, Inc. og andre bidragsytere)	https://github.com/jdecked/twemoji
+soleil	soleil	2600.svg	CC BY 4.0	Twemoji (Twitter, Inc. og andre bidragsytere)	https://github.com/jdecked/twemoji
+nuage	nuage	26c5.svg	CC BY 4.0	Twemoji (Twitter, Inc. og andre bidragsytere)	https://github.com/jdecked/twemoji
+brouillard	brouillard	Mount_Lushan_-_fog.JPG	CC BY-SA 2.5	pfctdayelise	https://commons.wikimedia.org/wiki/File:Mount_Lushan_-_fog.JPG
+orage	orage	Lightning_Pritzerbe_01_(MK).jpg	CC BY-SA 3.0	Mathias Krumbholz	https://commons.wikimedia.org/wiki/File:Lightning_Pritzerbe_01_(MK).jpg
+froid	froid	1f976.svg	CC BY 4.0	Twemoji (Twitter, Inc. og andre bidragsytere)	https://github.com/jdecked/twemoji
+arbres	arbres	Autumn_leaves_on_trees_with_pathway_--_1_of_33.jpg	CC0	Maritess Sulcer	https://commons.wikimedia.org/wiki/File:Autumn_leaves_on_trees_with_pathway_--_1_of_33.jpg
+feuille	feuille	Maple_leaf_held_up_in_autumn,_Vieux-Limoilou.jpg	CC BY-SA 4.0	Wilfredor	https://commons.wikimedia.org/wiki/File:Maple_leaf_held_up_in_autumn%2C_Vieux-Limoilou.jpg
+foret	forêt	Autumn_Forest_and_wood_trees_31.jpg	CC BY 4.0	Scott Wylie	https://commons.wikimedia.org/wiki/File:Autumn_Forest_and_wood_trees_31.jpg
+montagne	montagne	Overcoat_Peak.jpg	CC BY 2.0	Martin Bravenboer	https://commons.wikimedia.org/wiki/File:Overcoat_Peak.jpg
+champ	champ	Autumn_field_in_Onitcani_01.jpg	CC0	Iurie Nistor	https://commons.wikimedia.org/wiki/File:Autumn_field_in_Onitcani_01.jpg
+chemin	chemin	Forest_path_during_autumn.jpg	CC0	Paxxen	https://commons.wikimedia.org/wiki/File:Forest_path_during_autumn.jpg
+riviere	rivière	Rogue_River_Oregon_USA.jpg	CC BY 2.0	Hamad Darwish	https://commons.wikimedia.org/wiki/File:Rogue_River_Oregon_USA.jpg
+gants	gants	Centre_de_Documentació_Museu_Tèxtil_de_Terrassa-_Reserves-_Teixits-_Guants002.JPG	CC BY-SA 3.0	Kippelboy	https://commons.wikimedia.org/wiki/File:Centre_de_Documentaci%C3%B3_Museu_T%C3%A8xtil_de_Terrassa-_Reserves-_Teixits-_Guants002.JPG
+bottes	bottes	Rain_boots_on_Stairs.jpg	CC BY-SA 3.0	Erikamthompson	https://commons.wikimedia.org/wiki/File:Rain_boots_on_Stairs.jpg
+manteau	manteau	1f9e5.svg	CC BY 4.0	Twemoji (Twitter, Inc. og andre bidragsytere)	https://github.com/jdecked/twemoji
+echarpe	écharpe	1f9e3.svg	CC BY 4.0	Twemoji (Twitter, Inc. og andre bidragsytere)	https://github.com/jdecked/twemoji
+bonnet	bonnet	Beanie_-_Knit_Cap_(51013511676).jpg	CC BY 2.0	ajay_suresh	https://commons.wikimedia.org/wiki/File:Beanie_-_Knit_Cap_(51013511676).jpg
+pull	pull	Grandpa_Sweater_full_pattern_H&M.jpg	CC BY-SA 4.0	Kauey	https://commons.wikimedia.org/wiki/File:Grandpa_Sweater_full_pattern_H%26M.jpg
+parapluie	parapluie	A_Classy_Umbrella_To_Protect_My_Cigarette_(127721121).jpeg	CC BY 3.0	Sergio Miranda	https://commons.wikimedia.org/wiki/File:A_Classy_Umbrella_To_Protect_My_Cigarette_(127721121).jpeg
+renard	renard	Red_fox_catches_a_vole_-_Tolyatti,_Russia.jpg	CC BY 2.0	Andrey Gulivanov	https://commons.wikimedia.org/wiki/File:Red_fox_catches_a_vole_-_Tolyatti%2C_Russia.jpg
+ecureuil	écureuil	Squirrel_posing.jpg	CC BY 2.0	Peter Trimming	https://commons.wikimedia.org/wiki/File:Squirrel_posing.jpg
+herisson	hérisson	West_European_Hedgehog_(Erinaceus_europaeus)1.jpg	CC BY-SA 3.0	Hrald	https://commons.wikimedia.org/wiki/File:West_European_Hedgehog_(Erinaceus_europaeus)1.jpg
+cerf	cerf	014_Wild_Red_Deer_Switzerland_Photo_by_Giles_Laurent.jpg	CC BY-SA 4.0	Giles Laurent	https://commons.wikimedia.org/wiki/File:014_Wild_Red_Deer_Switzerland_Photo_by_Giles_Laurent.jpg
+hibou	hibou	Athene_cunicularia_1_edited.JPG	CC BY 2.0	Wagner Machado Carlos Lemes	https://commons.wikimedia.org/wiki/File:Athene_cunicularia_1_edited.JPG
+oiseau	oiseau	Female_house_sparrow_at_Kodai.jpg	CC BY-SA 4.0	Deepak Sundar	https://commons.wikimedia.org/wiki/File:Female_house_sparrow_at_Kodai.jpg
+sanglier	sanglier	A_young_wild_boar_in_his_environment.jpg	CC BY 3.0	Michael Gäbler	https://commons.wikimedia.org/wiki/File:A_young_wild_boar_in_his_environment.jpg
+citrouille	citrouille	Cucurbita_2011_G1.jpg	Public domain	George Chernilevsky	https://commons.wikimedia.org/wiki/File:Cucurbita_2011_G1.jpg
+pomme	pomme	Red_Apple.jpg	CC BY 2.0	Abhijit Tembhekar	https://commons.wikimedia.org/wiki/File:Red_Apple.jpg
+poire	poire	Pear_DS.jpg	CC BY-SA 3.0	Augustus Binu	https://commons.wikimedia.org/wiki/File:Pear_DS.jpg
+champignons	champignons	Edible_fungi_in_basket_2012_G1.jpg	Public domain	George Chernilevsky	https://commons.wikimedia.org/wiki/File:Edible_fungi_in_basket_2012_G1.jpg
+raisin	raisin	Edle_Weinrebe,_'Vitis_vinifera'_subsp._'vinifera.jpg	CC BY 2.0	eflon	https://commons.wikimedia.org/wiki/File:Edle_Weinrebe%2C_'Vitis_vinifera'_subsp._'vinifera.jpg
+poele	poêle	Frying_Pan_2_2019-03-21.jpg	CC BY-SA 4.0	FASTILY	https://commons.wikimedia.org/wiki/File:Frying_Pan_2_2019-03-21.jpg
+casserole	casserole	Hahn_16cm_Saucepan.jpg	CC BY 2.0	Cooks & Kitchens	https://commons.wikimedia.org/wiki/File:Hahn_16cm_Saucepan.jpg
+cuillere	cuillère	Ngaji.jpg	CC BY-SA 4.0	Akwugo	https://commons.wikimedia.org/wiki/File:Ngaji.jpg
+tarte	tarte	Apple_pie_24.jpg	CC BY 4.0	Shisma	https://commons.wikimedia.org/wiki/File:Apple_pie_24.jpg
+confiture	confiture	Jam_jar,_Kazakhstan.jpg	CC BY-SA 4.0	Nurken	https://commons.wikimedia.org/wiki/File:Jam_jar%2C_Kazakhstan.jpg

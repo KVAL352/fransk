@@ -76,12 +76,31 @@
     if (!lydKlar) { tale(tekst); return; }
     // Ett felles lydelement, så en ny avspilling avbryter den forrige.
     if (!spiller) spiller = new Audio();
+    spiller.onended = null;
     spiller.onerror = function () { tale(tekst); };
     spiller.src = "lyd/" + lydNavn(tekst) + ".mp3";
     var p = spiller.play();
     if (p && p.catch) p.catch(function () { /* feil meldes via onerror; blokkert autoplay gir stillhet */ });
   }
 
-  if (typeof window !== "undefined") window.Stemme = { init: init, si: si };
+  // Flere klipp etter hverandre (pronomen, så form). Uten lydfiler leses alt som én tekst av nettleserstemmen.
+  function siRekke(tekster) {
+    if (tekster.length < 2) { si(tekster[0]); return; }
+    if (!lydKlar) { tale(tekster.join(" ")); return; }
+    if (!spiller) spiller = new Audio();
+    var i = 0;
+    function neste() {
+      if (i >= tekster.length) { spiller.onended = null; return; }
+      var tekst = tekster[i++];
+      spiller.onerror = function () { spiller.onended = null; tale(tekster.slice(i - 1).join(" ")); };
+      spiller.onended = neste;
+      spiller.src = "lyd/" + lydNavn(tekst) + ".mp3";
+      var p = spiller.play();
+      if (p && p.catch) p.catch(function () { /* blokkert autoplay gir stillhet */ });
+    }
+    neste();
+  }
+
+  if (typeof window !== "undefined") window.Stemme = { init: init, si: si, siRekke: siRekke };
   if (typeof module !== "undefined") module.exports = { lydNavn: lydNavn };
 })();
