@@ -65,9 +65,12 @@
     var i = SPRAK.indexOf(kode);
     return s.betyd[i < 0 ? 1 : i];
   }
+  // Setningene der alle ordene finnes som Lingua Libre-klipp i lyd/ (tools/hent-setningslyd.mjs, tools/setninger-med-lyd.json). Resten leses av nettleserstemmen.
+  var MED_LYD = [1,2,3,4,5,6,7,10,11,12,14,16,18,20,21];
+  function harLyd(s) { return MED_LYD.indexOf(s.nr) >= 0; }
   function hent(nr) { return LISTE[nr - 1] || null; }
 
-  var api = { LISTE: LISTE, ANTALL: LISTE.length, SPRAK: SPRAK, fasit: fasit, betyd: betyd, hent: hent, stor: stor };
+  var api = { LISTE: LISTE, ANTALL: LISTE.length, SPRAK: SPRAK, fasit: fasit, betyd: betyd, hent: hent, stor: stor, harLyd: harLyd };
   if (typeof module !== "undefined" && module.exports) module.exports = api;
   else window.SetningerHost = api;
 })();

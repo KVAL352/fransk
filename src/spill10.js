@@ -1,5 +1,5 @@
 // Spill 10: setninger i høstpakken (trinn 3). Se PLAN-host.md, «Spill 10».
-// Del 1: ordene er blandet, hun drar dem på plass på linja (valg B, 2026-11-12), så «Sjekk». Trykk flytter også.
+// Del 1: ordene er blandet, hun trykker dem på plass på linja i riktig rekkefølge, så «Sjekk». Dra ble fjernet 2026-11-12 etter at hun sa hun ikke ville ha det.
 // Del 2: setningen vises oversatt, hun skriver den selv. src/sjekk.js med aksent som merknad.
 // Del 2 åpnes når alle setningene i del 1 er ferdige. Etter begge delene blandes alt.
 //
@@ -23,7 +23,7 @@
       delTekst: "{del}: {n} av {total} setninger ferdige",
       oppgave1: "Sett ordene i riktig rekkefølge.",
       oppgave2: "Skriv setningen på fransk.",
-      tips: "Dra ordene opp på linja, og flytt dem rundt der. Du kan også trykke på et ord for å flytte det.",
+      tips: "Trykk på ordene i riktig rekkefølge. Trykk på et ord på linja for å ta det bort igjen.",
       brukAlle: "Bruk alle ordene først.",
       riktig: "Riktig!",
       riktigAksent: "Riktig! Se på aksentene: {fasit}",
@@ -52,7 +52,7 @@
       delTekst: "{del}: {n} of {total} sentences done",
       oppgave1: "Put the words in the right order.",
       oppgave2: "Write the sentence in French.",
-      tips: "Drag the words up onto the line, and move them around there. You can also tap a word to move it.",
+      tips: "Tap the words in the right order. Tap a word on the line to take it off again.",
       brukAlle: "Use all the words first.",
       riktig: "Correct!",
       riktigAksent: "Correct! Check the accents: {fasit}",
@@ -154,6 +154,9 @@
   // Hvilken del spørsmålet hører til: id 1..N er del 1, N+1..2N del 2.
   function delFor(i) { return i > N ? 2 : 1; }
 
+  // Setninger der alle ordene har Lingua Libre-klipp spilles av klippene (flere talere), de andre leses av nettleserstemmen.
+  function lesOpp() { if (S.harLyd(setn)) window.Stemme.siRekke(setn.ord); else window.Stemme.si(S.fasit(setn)); }
+
   function nyttSporsmal() {
     var min = DEL === 2 ? N + 1 : 1, maks = DEL === 1 ? N : 2 * N;
     id = F.velgTall(SPILL, min, maks, forrige, null, null, FERDIG_ANDEL);
@@ -185,7 +188,7 @@
     }
   }
 
-  // ---- Del 1: brikker som dras (eller trykkes) ----
+  // ---- Del 1: brikker som trykkes ----
   function oppdaterStor() {
     Array.prototype.forEach.call(bankEl.querySelectorAll(".brikke"), function (b) { b.textContent = b.dataset.o; });
     Array.prototype.forEach.call(linjeEl.querySelectorAll(".brikke"), function (b, i) { b.textContent = i === 0 ? S.stor(b.dataset.o) : b.dataset.o; });
@@ -195,55 +198,12 @@
     b.type = "button"; b.className = "brikke"; b.dataset.o = o; b.textContent = o;
     b.addEventListener("click", function () {
       if (besvart) return;
-      if (b.dataset.dro === "1") { b.dataset.dro = ""; return; }
       (b.parentNode === bankEl ? linjeEl : bankEl).appendChild(b);
       oppdaterStor(); tilbake.textContent = "";
       b.focus();
     });
-    b.addEventListener("pointerdown", function (e) { if (!besvart) dra(b, e); });
     return b;
   }
-  function dra(b, e) {
-    var sx = e.clientX, sy = e.clientY, flyt = null, markor = null, r = b.getBoundingClientRect();
-    function flytt(ev) {
-      if (!flyt && Math.hypot(ev.clientX - sx, ev.clientY - sy) < 6) return;
-      if (!flyt) {
-        flyt = b.cloneNode(true); flyt.classList.add("flyter"); flyt.style.width = r.width + "px";
-        document.body.appendChild(flyt); b.classList.add("plass");
-        markor = document.createElement("span"); markor.className = "markor";
-      }
-      ev.preventDefault();
-      flyt.style.left = (ev.clientX - (sx - r.left)) + "px";
-      flyt.style.top = (ev.clientY - (sy - r.top)) + "px";
-      var lr = linjeEl.getBoundingClientRect();
-      if (ev.clientY > lr.top - 30 && ev.clientY < lr.bottom + 20) {
-        var andre = Array.prototype.filter.call(linjeEl.querySelectorAll(".brikke"), function (x) { return x !== b; });
-        var foran = null;
-        for (var i = 0; i < andre.length; i++) {
-          var ar = andre[i].getBoundingClientRect();
-          var sammeRad = ev.clientY < ar.bottom && ev.clientY > ar.top - 8;
-          if ((sammeRad && ev.clientX < ar.left + ar.width / 2) || ev.clientY < ar.top - 8) { foran = andre[i]; break; }
-        }
-        linjeEl.insertBefore(markor, foran);
-      } else if (markor.parentNode) markor.parentNode.removeChild(markor);
-    }
-    function slipp() {
-      document.removeEventListener("pointermove", flytt);
-      document.removeEventListener("pointerup", slipp);
-      document.removeEventListener("pointercancel", slipp);
-      if (!flyt) return;
-      b.dataset.dro = "1";
-      flyt.remove(); b.classList.remove("plass");
-      if (markor.parentNode) { linjeEl.insertBefore(b, markor); markor.remove(); }
-      else bankEl.appendChild(b);
-      oppdaterStor(); tilbake.textContent = "";
-      window.setTimeout(function () { b.dataset.dro = ""; }, 0);
-    }
-    document.addEventListener("pointermove", flytt);
-    document.addEventListener("pointerup", slipp);
-    document.addEventListener("pointercancel", slipp);
-  }
-
   sjekk1.addEventListener("click", function () {
     if (besvart) return;
     var mitt = Array.prototype.map.call(linjeEl.querySelectorAll(".brikke"), function (b) { return b.dataset.o; });
@@ -300,7 +260,7 @@
     horKnapp.hidden = false;
     nesteKnapp.hidden = false;
     nesteKnapp.focus();
-    window.Stemme.si(S.fasit(setn));
+    lesOpp();
     if (DEL && !varFerdig && ferdigDel(DEL)) {
       var ferdigDelNr = DEL;
       delKlar = true;
@@ -315,7 +275,7 @@
     }
   }
 
-  horKnapp.addEventListener("click", function () { if (setn) window.Stemme.si(S.fasit(setn)); });
+  horKnapp.addEventListener("click", function () { if (setn) lesOpp(); });
   nesteKnapp.addEventListener("click", function () {
     if (delKlar) { delKlar = false; DEL = finnDelEtterFerdig(); tegnDeler(); }
     nyttSporsmal();

@@ -41,12 +41,9 @@
   .linjen.galt { background: #f3d6d3; border-bottom-color: var(--rod); }
   .banken { min-height: 3.5rem; display: flex; flex-wrap: wrap; gap: .4rem; padding: .75rem 0 0; }
   .brikke { font: inherit; font-size: 1.25rem; color: var(--svart); background: var(--kort); border: 2px solid var(--svart); border-radius: 6px;
-    padding: .35rem .75rem; cursor: grab; touch-action: none; user-select: none; -webkit-user-select: none; }
+    padding: .35rem .75rem; cursor: pointer; touch-action: manipulation; user-select: none; -webkit-user-select: none; }
   .brikke:focus-visible { outline: 3px solid var(--svart); outline-offset: 2px; }
   .brikke:disabled { cursor: default; }
-  .brikke.flyter { position: fixed; z-index: 10; pointer-events: none; cursor: grabbing; box-shadow: 0 6px 14px rgba(0,0,0,.25); }
-  .brikke.plass { opacity: .25; }
-  .markor { width: 3px; align-self: stretch; background: var(--svart); border-radius: 2px; }
   .tips { font-size: .875rem; color: var(--dempet); margin: .5rem 0 0; }
 
   /* Del 2: skriv */
