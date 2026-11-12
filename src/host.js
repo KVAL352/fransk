@@ -116,7 +116,60 @@
     return { status: "ord", aksentfeil: false };
   }
 
-  var api = { TEMAER: TEMAER, ORD: ORD, ANTALL: ORD.length, hent: hent, iTema: iTema, fasit: fasit, vurder: vurder };
+  // Hva ordet betyr, vist etter svaret på språket hun har valgt (Kjersti 2026-11-12).
+  // nb og en: Claude. ar, ro, ru, sq, pt (pt-PT): Claude-utkast, ikke lest av noen som kan språkene.
+  // Rekkefølge: nb, en, ar, ro, ru, sq, pt.
+  var BETYD_SPRAK = ["nb", "en", "ar", "ro", "ru", "sq", "pt"];
+  var BETYD = {
+    "vent": ["vind", "wind", "رياح", "vânt", "ветер", "erë", "vento"],
+    "pluie": ["regn", "rain", "مطر", "ploaie", "дождь", "shi", "chuva"],
+    "soleil": ["sol", "sun", "شمس", "soare", "солнце", "diell", "sol"],
+    "nuage": ["sky", "cloud", "سحابة", "nor", "облако", "re", "nuvem"],
+    "brouillard": ["tåke", "fog", "ضباب", "ceață", "туман", "mjegull", "nevoeiro"],
+    "orage": ["tordenvær", "thunderstorm", "عاصفة رعدية", "furtună", "гроза", "stuhi", "trovoada"],
+    "froid": ["kulde", "cold", "برد", "frig", "холод", "të ftohtë", "frio"],
+    "arbre": ["tre", "tree", "شجرة", "copac", "дерево", "pemë", "árvore"],
+    "feuille": ["blad", "leaf", "ورقة شجر", "frunză", "лист", "gjethe", "folha"],
+    "forêt": ["skog", "forest", "غابة", "pădure", "лес", "pyll", "floresta"],
+    "montagne": ["fjell", "mountain", "جبل", "munte", "гора", "mal", "montanha"],
+    "champ": ["åker", "field", "حقل", "câmp", "поле", "fushë", "campo"],
+    "chemin": ["sti", "path", "طريق", "drum", "тропинка", "shteg", "caminho"],
+    "rivière": ["elv", "river", "نهر", "râu", "река", "lumë", "rio"],
+    "gant": ["hanske", "glove", "قفاز", "mănușă", "перчатка", "dorezë", "luva"],
+    "botte": ["støvel", "boot", "جزمة", "cizmă", "сапог", "çizme", "bota"],
+    "manteau": ["frakk", "coat", "معطف", "palton", "пальто", "pallto", "casaco"],
+    "écharpe": ["skjerf", "scarf", "وشاح", "fular", "шарф", "shall", "cachecol"],
+    "bonnet": ["lue", "woolly hat", "قبعة صوفية", "căciulă", "шапка", "kapelë leshi", "gorro"],
+    "pull": ["genser", "jumper", "كنزة", "pulover", "свитер", "pulovër", "camisola"],
+    "parapluie": ["paraply", "umbrella", "مظلة", "umbrelă", "зонт", "çadër", "guarda-chuva"],
+    "renard": ["rev", "fox", "ثعلب", "vulpe", "лиса", "dhelpër", "raposa"],
+    "écureuil": ["ekorn", "squirrel", "سنجاب", "veveriță", "белка", "ketër", "esquilo"],
+    "hérisson": ["pinnsvin", "hedgehog", "قنفذ", "arici", "ёж", "iriq", "ouriço"],
+    "cerf": ["hjort", "deer", "أيل", "cerb", "олень", "dre", "veado"],
+    "hibou": ["ugle", "owl", "بومة", "bufniță", "сова", "buf", "mocho"],
+    "oiseau": ["fugl", "bird", "طائر", "pasăre", "птица", "zog", "pássaro"],
+    "sanglier": ["villsvin", "wild boar", "خنزير بري", "mistreț", "кабан", "derr i egër", "javali"],
+    "citrouille": ["gresskar", "pumpkin", "يقطين", "dovleac", "тыква", "kungull", "abóbora"],
+    "pomme": ["eple", "apple", "تفاحة", "măr", "яблоко", "mollë", "maçã"],
+    "poire": ["pære", "pear", "كمثرى", "pară", "груша", "dardhë", "pera"],
+    "champignon": ["sopp", "mushroom", "فطر", "ciupercă", "гриб", "kërpudhë", "cogumelo"],
+    "noix": ["valnøtt", "walnut", "جوز", "nucă", "грецкий орех", "arrë", "noz"],
+    "raisin": ["drue", "grape", "عنب", "strugure", "виноград", "rrush", "uva"],
+    "poêle": ["stekepanne", "frying pan", "مقلاة", "tigaie", "сковорода", "tigan", "frigideira"],
+    "casserole": ["kasserolle", "saucepan", "قدر", "cratiță", "кастрюля", "tenxhere", "tacho"],
+    "cuillère": ["skje", "spoon", "ملعقة", "lingură", "ложка", "lugë", "colher"],
+    "tarte": ["pai", "tart", "فطيرة", "tartă", "пирог", "pite", "tarte"],
+    "confiture": ["syltetøy", "jam", "مربى", "gem", "варенье", "reçel", "compota"],
+  };
+  // Betydningen på språket med koden, engelsk hvis språket mangler. null hvis ordet mangler.
+  function betyd(o, kode) {
+    var rad = BETYD[o.ord];
+    if (!rad) return null;
+    var i = BETYD_SPRAK.indexOf(kode);
+    return rad[i < 0 ? 1 : i];
+  }
+
+  var api = { TEMAER: TEMAER, ORD: ORD, ANTALL: ORD.length, hent: hent, iTema: iTema, fasit: fasit, vurder: vurder, betyd: betyd, BETYD: BETYD };
   if (typeof module !== "undefined" && module.exports) module.exports = api;
   if (typeof window !== "undefined") window.Host = api;
 })();

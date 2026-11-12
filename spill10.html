@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>French: autumn sentences</title>
+<style>
+  /* Samme uttrykk som spill 8 og 9. Skala: 0.875 (meta) · 1.125 (tekst, knapper) · 1.25 (brikker) · 1.5 (setningen). */
+  :root {
+    --svart: #1c1c1a; --papir: #ecebe6; --kort: #f8f7f3; --linje: #c9c6bd; --dempet: #55524b;
+    --rod: #b3261e; --gull: #f6c945;
+    --inn: cubic-bezier(0,0,.38,.9); --standard: cubic-bezier(.2,0,.38,.9);
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--papir); color: var(--svart); font-family: system-ui, sans-serif; font-size: 1.125rem; line-height: 1.5; }
+  button { font: inherit; color: var(--svart); cursor: pointer; }
+  [hidden] { display: none !important; }
+  .side { max-width: 36rem; margin: 0 auto; padding: 1.5rem 16px 3rem; }
+  h1 { font-size: 1.125rem; margin: 0 0 1rem; }
+
+  /* To deler: to fliser som fylles med gull */
+  .deler { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: .5rem; }
+  .delflis { border: 2px solid var(--svart); border-radius: 8px; padding: .4rem .6rem; font-size: .875rem; font-weight: 600;
+    background: linear-gradient(to right, var(--gull) calc(var(--andel, 0) * 100%), var(--kort) calc(var(--andel, 0) * 100%)); }
+  .delflis.na { outline: 2px solid var(--svart); outline-offset: 2px; }
+  .delflis.last { background: #d9d6cc; border-style: dashed; color: var(--dempet); }
+  .delflis.ferdig { background: var(--gull); }
+  .dellinje { font-size: .875rem; color: var(--dempet); margin: 0 0 1.5rem; }
+
+  .kort { position: relative; background: var(--kort); border: 2px solid var(--svart); border-radius: 8px; padding: 1.25rem 1.25rem 1.5rem; }
+  .kort::before { content: ""; position: absolute; left: -2px; right: -2px; top: -2px; height: 8px; background: var(--svart); border-radius: 8px 8px 0 0; }
+  .kort.ferdig { background-color: var(--gull); }
+  .kort.ferdig::before { display: none; }
+  .oppgave { font-size: .875rem; color: var(--dempet); margin: .5rem 0 .25rem; }
+  .betyd { font-size: 1.25rem; margin: 0 0 1rem; }
+
+  /* Del 1: linja og banken */
+  .linjen { min-height: 3.5rem; display: flex; flex-wrap: wrap; align-items: center; gap: .4rem; padding: .5rem;
+    border-bottom: 3px solid var(--svart); background: #fff; border-radius: 6px 6px 0 0; transition: background .3s var(--inn); }
+  .linjen.riktig { background: var(--gull); }
+  .linjen.galt { background: #f3d6d3; border-bottom-color: var(--rod); }
+  .banken { min-height: 3.5rem; display: flex; flex-wrap: wrap; gap: .4rem; padding: .75rem 0 0; }
+  .brikke { font: inherit; font-size: 1.25rem; color: var(--svart); background: var(--kort); border: 2px solid var(--svart); border-radius: 6px;
+    padding: .35rem .75rem; cursor: grab; touch-action: none; user-select: none; -webkit-user-select: none; }
+  .brikke:focus-visible { outline: 3px solid var(--svart); outline-offset: 2px; }
+  .brikke:disabled { cursor: default; }
+  .brikke.flyter { position: fixed; z-index: 10; pointer-events: none; cursor: grabbing; box-shadow: 0 6px 14px rgba(0,0,0,.25); }
+  .brikke.plass { opacity: .25; }
+  .markor { width: 3px; align-self: stretch; background: var(--svart); border-radius: 2px; }
+  .tips { font-size: .875rem; color: var(--dempet); margin: .5rem 0 0; }
+
+  /* Del 2: skriv */
+  .skriv { display: flex; gap: .5rem; }
+  .skriv input { flex: 1; min-width: 0; font: inherit; font-size: 1.25rem; padding: .4rem .6rem; border: 2px solid var(--linje); border-radius: 6px; background: #fff; }
+  .skriv input.galt { border-color: var(--rod); background: var(--kort); color: var(--rod); }
+  .skriv input.rett { border-color: var(--svart); background: var(--gull); }
+  .skriv input:disabled { opacity: 1; }
+  .skriv button, .handling button, .knapperad button { padding: .55rem 1.2rem; border: 2px solid var(--svart); border-radius: 6px; background: #fff; }
+  .knapperad { display: flex; gap: .5rem; margin-top: 1rem; }
+  button:focus-visible, .skriv input:focus-visible { outline: 3px solid var(--svart); outline-offset: 2px; }
+  .skjult { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+  .svar { margin-top: 1rem; min-height: 1.7em; }
+  .svar p { margin: 0; }
+  .svar .feil { color: var(--rod); font-weight: 600; }
+  .svar .regel { color: var(--dempet); margin-top: .35rem; }
+  .svar .fasit { font-size: 1.25rem; margin-top: .35rem; }
+
+  .handling { display: flex; gap: .5rem; margin-top: 1rem; position: sticky; bottom: 0; padding: .5rem 0; background: var(--papir); }
+  .handling .neste { background: var(--svart); color: #fff; margin-left: auto; }
+
+  .under { margin-top: 2.5rem; font-size: .875rem; color: var(--dempet); display: flex; justify-content: space-between; gap: 1rem; }
+  .under a, .under button { color: var(--dempet); font-size: .875rem; background: none; border: 0; padding: 0; text-decoration: underline; }
+  #start button { padding: .55rem 1.2rem; border: 2px solid var(--svart); border-radius: 6px; background: var(--svart); color: #fff; }
+  .lastlenke { display: inline-block; padding: .55rem 1.2rem; border: 2px solid var(--svart); border-radius: 6px; background: var(--svart); color: #fff; text-decoration: none; }
+
+  @media (max-height: 640px) {
+    .side { padding-top: .75rem; }
+    .dellinje { display: none; }
+    .kort { padding: .75rem 1rem 1rem; }
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    .kort.inn { animation: inn .2s var(--inn); }
+  }
+  @media (prefers-reduced-motion: reduce) { .linjen { transition: none; } }
+  @keyframes inn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+</style>
+</head>
+<body>
+<div class="side">
+  <h1 id="h1"></h1>
+  <div class="deler" id="deler"></div>
+  <p class="dellinje" id="dellinje"></p>
+  <div id="last" hidden>
+    <p id="lastTekst"></p>
+    <a href="hostpakke.html" id="lastLenke" class="lastlenke"></a>
+  </div>
+  <div id="start">
+    <p id="intro"></p>
+    <button id="startknapp" type="button" data-t="knapp.start">Start</button>
+  </div>
+  <div id="spill" hidden>
+    <article class="kort" id="kort">
+      <p class="oppgave" id="oppgave"></p>
+      <p class="betyd" id="betyd" dir="auto"></p>
+      <div id="del1">
+        <div class="linjen" id="linjen" lang="fr"></div>
+        <div class="banken" id="banken" lang="fr"></div>
+        <p class="tips" id="tips"></p>
+        <div class="knapperad"><button type="button" id="sjekk1" data-t="knapp.sjekk">Check</button></div>
+      </div>
+      <form class="skriv" id="skjema" autocomplete="off" hidden>
+        <input id="svar" type="text" lang="fr" dir="ltr" autocapitalize="sentences" autocomplete="off" spellcheck="false">
+        <button id="sjekk2" type="submit" data-t="knapp.sjekk">Check</button>
+      </form>
+      <div class="svar" id="tilbakemelding" aria-live="polite"></div>
+      <div class="knapperad"><button type="button" id="hor" hidden></button></div>
+    </article>
+    <div class="handling">
+      <button type="button" class="neste" id="neste" hidden data-t="knapp.neste">Next</button>
+    </div>
+  </div>
+  <div class="under">
+    <a href="hostpakke.html" id="menyLenke"></a>
+    <button id="nullstill" type="button" data-t="knapp.nullstill">Reset progress</button>
+  </div>
+  <p id="stemmeinfo" hidden></p>
+</div>
+<script src="src/tekster.js"></script>
+<script src="src/tekster3.js"></script>
+<script src="src/sjekk.js"></script>
+<script src="src/ord.js"></script>
+<script src="src/host.js"></script>
+<script src="src/stemme.js"></script>
+<script src="src/fremgang.js"></script>
+<script src="src/feiring.js"></script>
+<script src="src/verb.js"></script>
+<script src="src/setninger-host.js"></script>
+<script src="src/hostpakke.js"></script>
+<script src="src/spill10.js"></script>
+</body>
+</html>

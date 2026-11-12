@@ -108,6 +108,16 @@
   var bildeEl = $("bilde");
   var hintEl = $("hint");
   var valgEl = $("valg");
+  // Pil opp/ned flytter mellom svarknappene (rundt i ring), som i spill 8. Enter velger den som har fokus.
+  valgEl.addEventListener("keydown", function (e) {
+    if (e.key !== "ArrowDown" && e.key !== "ArrowUp") return;
+    var knapper = Array.prototype.slice.call(valgEl.children);
+    var i = knapper.indexOf(document.activeElement);
+    if (i < 0) return;
+    e.preventDefault();
+    var steg = e.key === "ArrowDown" ? 1 : -1;
+    knapper[(i + steg + knapper.length) % knapper.length].focus();
+  });
   var skjemaEl = $("skjema");
   var svarEl = $("svar");
   var sjekkKnapp = $("sjekk");
@@ -334,6 +344,14 @@
       linje(melding, "feil");
     }
     if (klasse !== "feil" && melding) linje(melding, "regel");
+    // Hva ordet betyr, på språket hun har valgt (Kjersti 2026-11-12).
+    var betydning = H.betyd(ord, window.Tekster.kode());
+    if (betydning) {
+      linje(H.fasit(ord) + " = " + betydning, "betyd");
+      var bp = tilbakemelding.lastChild;
+      bp.lang = window.Tekster.kode();
+      bp.dir = "auto";
+    }
     horKnapp.hidden = false;
     nesteKnapp.hidden = false;
     nesteKnapp.focus();

@@ -1,5 +1,5 @@
 // Høstpakken: tre trinn i en sti, låst i rekkefølge (se PLAN-host.md, «Høstpakken»).
-// Trinn 1 verb (spill8.html?pakke=host), trinn 2 ord (spill9.html), trinn 3 setninger (spill 10, ikke bygget).
+// Trinn 1 verb (spill8.html?pakke=host), trinn 2 ord (spill9.html), trinn 3 setninger (spill10.html).
 // Status leses fra fremgangen i hvert spill, ingenting lagres her. Brukes av hostpakke.html og spill9.js (låsen).
 // ?test=1&trinn=N later som trinnene før N er ferdige (bare visningen, rører ikke fremgangen).
 
@@ -27,7 +27,14 @@
     return window.Fremgang.alleUtlaert("spill9", 1, window.Host.ANTALL);
   }
 
-  var api = { verbFerdig: verbFerdig, ordFerdig: ordFerdig };
+  // Setningstrinnet (spill 10) er ferdig når begge delene er ferdige: nummer 1..2N i «spill10».
+  function setnFerdig() {
+    if (testTrinn() >= 4) return true;
+    var S = window.SetningerHost;
+    return !!S && window.Fremgang.alleUtlaert("spill10", 1, 2 * S.ANTALL);
+  }
+
+  var api = { verbFerdig: verbFerdig, ordFerdig: ordFerdig, setnFerdig: setnFerdig };
   window.HostPakke = api;
 
   // Sti-siden. Finnes ikke #sti, er fila lastet bare for statusen (spill 9).
@@ -41,7 +48,7 @@
       trinn: "Trinn {n}",
       verb: "Verb", verbDel: "je, tu, il, elle, så nous, vous, ils, elles",
       ord: "Ord", ordDel: "seks temaer",
-      setn: "Setninger", setnDel: "Kommer snart",
+      setn: "Setninger", setnDel: "rekkefølge, så skriv selv",
       ferdig: "ferdig", last: "låst", lenkeMeny: "Til menyen", start: "Start", igjen: "Øv igjen"
     },
     en: {
@@ -49,7 +56,7 @@
       trinn: "Step {n}",
       verb: "Verbs", verbDel: "je, tu, il, elle, then nous, vous, ils, elles",
       ord: "Words", ordDel: "six themes",
-      setn: "Sentences", setnDel: "Coming soon",
+      setn: "Sentences", setnDel: "word order, then write it yourself",
       ferdig: "done", last: "locked", lenkeMeny: "Back to the menu", start: "Start", igjen: "Practise again"
     }
   };
@@ -66,9 +73,9 @@
   var TRINN = [
     { navn: s("verb"), del: s("verbDel"), href: "spill8.html?pakke=host" },
     { navn: s("ord"), del: s("ordDel"), href: "spill9.html" },
-    { navn: s("setn"), del: s("setnDel"), ikkeBygget: true },
+    { navn: s("setn"), del: s("setnDel"), href: "spill10.html" },
   ];
-  var ferdig = verbFerdig() ? (ordFerdig() ? 2 : 1) : 0;
+  var ferdig = verbFerdig() ? (ordFerdig() ? (setnFerdig() ? 3 : 2) : 1) : 0;
 
   TRINN.forEach(function (t, i) {
     if (i > 0) {
