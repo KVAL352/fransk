@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>French: speaking pack</title>
+<style>
+  /* Utseende som hostpakke.html: trinnene under hverandre, streken mellom dem blir gull. */
+  :root { --svart: #1c1c1a; --papir: #ecebe6; --kort: #f8f7f3; --linje: #c9c6bd; --dempet: #55524b; --gull: #f6c945; --last: #d9d6cc;
+    --inn: cubic-bezier(0,0,.38,.9); }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--papir); color: var(--svart); font-family: system-ui, sans-serif; font-size: 1.125rem; line-height: 1.5; }
+  .side { max-width: 32rem; margin: 0 auto; padding: 1.5rem 16px 3rem; }
+  h1 { font-size: 1.125rem; margin: 0 0 1.5rem; }
+  .sti { display: flex; flex-direction: column; align-items: stretch; max-width: 18rem; margin: 0 auto; }
+  .bind { height: 1.5rem; width: 6px; align-self: center; background: var(--linje); }
+  .bind.gull { background: var(--gull); }
+  .trinn { display: block; position: relative; border: 2px solid var(--svart); border-radius: 8px; background: var(--kort); color: var(--svart);
+    padding: .9rem .75rem; text-align: center; text-decoration: none; transition: background .3s var(--inn); }
+  .trinn .nr { font-size: .9rem; color: var(--dempet); display: block; }
+  .trinn .navn { font-size: 1.5rem; font-weight: 600; display: block; }
+  .trinn .del { font-size: .95rem; color: var(--dempet); display: block; }
+  .trinn.ferdig { background: var(--gull); }
+  .trinn.ferdig .nr::before { content: "\2713  "; }
+  .trinn.last, .trinn.snart { background: var(--last); border-style: dashed; border-color: var(--dempet); color: var(--dempet); }
+  .trinn.apen { box-shadow: 0 0 0 4px var(--gull); }
+  .knapp { display: inline-block; margin-top: .6rem; padding: .55rem 1.6rem; border: 2px solid var(--svart); border-radius: 6px;
+    background: #fff; color: var(--svart); font-weight: 600; text-decoration: none; }
+  .knapp.hoved { background: var(--svart); color: #fff; }
+  .knapp:hover { background: var(--gull); color: var(--svart); }
+  .knapp:focus-visible { outline: 3px solid var(--svart); outline-offset: 3px; }
+  .skjult { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+  .under { margin-top: 2.5rem; font-size: .875rem; }
+  .under a { color: var(--dempet); }
+  @media (prefers-reduced-motion: reduce) { .trinn { transition: none; } }
+</style>
+</head>
+<body>
+<div class="side">
+  <h1 id="h1"></h1>
+  <div class="sti" id="sti" role="list"></div>
+  <div class="under"><a href="index.html" id="menyLenke"></a></div>
+</div>
+
+<script src="src/tekster.js"></script>
+<script src="src/sjekk.js"></script>
+<script src="src/verb.js"></script>
+<script src="src/ord.js"></script>
+<script src="src/host.js"></script>
+<script src="src/metro-ord.js"></script>
+<script src="src/metro.js"></script>
+<script src="src/is-ord.js"></script>
+<script src="src/is.js"></script>
+<script src="src/fremgang.js"></script>
+<script src="src/snakkepakke.js"></script>
+</body>
+</html>

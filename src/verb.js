@@ -41,7 +41,19 @@
       ["etre", "etre", "etre", "etre", "etre", "etre"]],
     ["avoir", ["ai", "as", "a", "avons", "avez", "ont"], true, "har", "to have",
       ["avoir", "avoir", "avoir", "avoir", "avoir", "avoir"]],
+    // Fra 66 og ut: bare til pakker (metro), ikke i spill 8 og ikke i NIVAER 1-4. Se GRUNN_ANTALL.
+    ["aller", ["vais", "vas", "va", "allons", "allez", "vont"], false, "går, drar", "to go",
+      ["aller", "aller", "aller", "aller", "aller", "aller"]],
+    ["prendre", ["prends", "prends", "prend", "prenons", "prenez", "prennent"], false, "tar", "to take",
+      ["prendre", "prendre", "prendre", "prendre", "prendre", "prendre"]],
+    ["arriver", ["arrive", "arrives", "arrive", "arrivons", "arrivez", "arrivent"], true, "kommer fram, ankommer", "to arrive"],
+    ["descendre", ["descends", "descends", "descend", "descendons", "descendez", "descendent"], false, "går av, går ned", "to get off, to go down",
+      ["descendre", "descendre", "descendre", "descendre", "descendre", "descendre"]],
+    ["partir", ["pars", "pars", "part", "partons", "partez", "partent"], false, "drar, reiser", "to leave",
+      ["partir", "partir", "partir", "partir", "partir", "partir"]],
   ];
+  // Spill 8 og de fire nivåene gjelder bare de 11 første verbene (id 1-66). Resten er med i pakker.
+  var GRUNN_ANTALL = 66;
 
   // Hva verbet betyr, til betydningssteget før bøyingen.
   var BETYDNING = {
@@ -56,6 +68,11 @@
     appeler: { nb: "å ringe, å kalle", en: "to call" },
     "être": { nb: "å være", en: "to be" },
     avoir: { nb: "å ha", en: "to have" },
+    aller: { nb: "å gå, å dra", en: "to go" },
+    prendre: { nb: "å ta", en: "to take" },
+    arriver: { nb: "å komme fram, å ankomme", en: "to arrive" },
+    descendre: { nb: "å gå av, å gå ned", en: "to get off, to go down" },
+    partir: { nb: "å dra, å reise", en: "to leave" },
   };
 
   // Kort forklaring per regel (brukes av svake områder).
@@ -72,22 +89,33 @@
       en: "être: je suis, tu es, il/elle est, nous sommes, vous êtes, ils/elles sont." },
     avoir: { nb: "avoir: j'ai, tu as, il/elle a, nous avons, vous avez, ils/elles ont.",
       en: "avoir: j'ai, tu as, il/elle a, nous avons, vous avez, ils/elles ont." },
+    aller: { nb: "aller: je vais, tu vas, il/elle va, nous allons, vous allez, ils/elles vont.",
+      en: "aller: je vais, tu vas, il/elle va, nous allons, vous allez, ils/elles vont." },
+    prendre: { nb: "prendre: je prends, tu prends, il/elle prend, nous prenons, vous prenez, ils/elles prennent. Ingen d i je, tu og il.",
+      en: "prendre: je prends, tu prends, il/elle prend, nous prenons, vous prenez, ils/elles prennent." },
+    descendre: { nb: "descendre: je descends, tu descends, il/elle descend, nous descendons, vous descendez, ils/elles descendent. Verb på -re: ingen endelse i il/elle.",
+      en: "descendre: je descends, tu descends, il/elle descend, nous descendons, vous descendez, ils/elles descendent. -re verbs: no ending in il/elle." },
+    partir: { nb: "partir: je pars, tu pars, il/elle part, nous partons, vous partez, ils/elles partent.",
+      en: "partir: je pars, tu pars, il/elle part, nous partons, vous partez, ils/elles partent." },
   };
 
-  var LISTE = [];
+  var ALLE = [];
   VERB.forEach(function (v, vi) {
     v[1].forEach(function (form, pi) {
       var id = vi * 6 + pi + 1;
       var regel = (v[5] && v[5][pi]) || (pi === 0 && v[2] ? "elisjon" : "endelse");
-      LISTE.push({
+      var niv = NIVAER.filter(function (n) { return id >= n.min && id <= n.maks; })[0];
+      ALLE.push({
         id: id, verb: v[0], person: pi, form: form, elisjon: v[2], regel: regel,
-        nivaa: NIVAER.filter(function (n) { return id >= n.min && id <= n.maks; })[0].nivaa,
+        nivaa: niv ? niv.nivaa : 0,
         nb: v[3], en: v[4],
       });
     });
   });
+  // LISTE er spill 8 (66 former). ALLE har også verbene som bare er med i pakker.
+  var LISTE = ALLE.slice(0, GRUNN_ANTALL);
 
-  function hent(id) { return LISTE[id - 1] || null; }
+  function hent(id) { return ALLE[id - 1] || null; }
 
   // Pronomen + form. variant velger il/elle og ils/elles (0 eller 1).
   function medPronomen(pronomen, form, elisjon) {
@@ -208,7 +236,7 @@
   function likeLyd(id) {
     var o = hent(id);
     if (o.person !== 2 && o.person !== 5) return false;
-    var s = LISTE.filter(function (x) { return x.verb === o.verb && x.person === (o.person === 2 ? 5 : 2); })[0];
+    var s = ALLE.filter(function (x) { return x.verb === o.verb && x.person === (o.person === 2 ? 5 : 2); })[0];
     if (!s) return false;
     return o.person === 2 ? s.form === o.form + "nt" : o.form === s.form + "nt";
   }
@@ -234,6 +262,24 @@
         { nb: "nous, vous, ils og elles", en: "nous, vous, ils and elles" },
       ],
     },
+    // Snakkepakken, isbutikken: 4 verb × 6 personer = 24 former. Bare verb som finnes fra før (vouloir, choisir, payer mangler).
+    is: {
+      verb: ["prendre", "aimer", "manger", "avoir"],
+      personer: [[0, 1, 2], [3, 4, 5]],
+      nivaaTekst: [
+        { nb: "je, tu, il og elle", en: "je, tu, il and elle" },
+        { nb: "nous, vous, ils og elles", en: "nous, vous, ils and elles" },
+      ],
+    },
+    // Snakkepakken, situasjonen på vei (spill 11): 6 verb × 6 personer = 36 former.
+    metro: {
+      verb: ["être", "aller", "prendre", "arriver", "descendre", "partir"],
+      personer: [[0, 1, 2], [3, 4, 5]],
+      nivaaTekst: [
+        { nb: "je, tu, il og elle", en: "je, tu, il and elle" },
+        { nb: "nous, vous, ils og elles", en: "nous, vous, ils and elles" },
+      ],
+    },
   };
 
   function pakke(navn) {
@@ -247,7 +293,7 @@
       p.verb.forEach(function (verb) {
         var vi = infinitiver.indexOf(verb);
         gruppe.forEach(function (pi) {
-          var o = JSON.parse(JSON.stringify(LISTE[vi * 6 + pi]));
+          var o = JSON.parse(JSON.stringify(ALLE[vi * 6 + pi]));
           grunn.push(o.id);
           o.id = liste.length + 1;
           o.nivaa = gi + 1;

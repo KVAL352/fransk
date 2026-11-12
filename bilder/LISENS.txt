@@ -56,3 +56,15 @@ casserole	casserole	Hahn_16cm_Saucepan.jpg	CC BY 2.0	Cooks & Kitchens	https://co
 cuillere	cuillère	Ngaji.jpg	CC BY-SA 4.0	Akwugo	https://commons.wikimedia.org/wiki/File:Ngaji.jpg
 tarte	tarte	Apple_pie_24.jpg	CC BY 4.0	Shisma	https://commons.wikimedia.org/wiki/File:Apple_pie_24.jpg
 confiture	confiture	Jam_jar,_Kazakhstan.jpg	CC BY-SA 4.0	Nurken	https://commons.wikimedia.org/wiki/File:Jam_jar%2C_Kazakhstan.jpg
+metro-metro	métro	1f687.svg	CC BY 4.0	Twemoji (Twitter, Inc. og andre bidragsytere)	https://github.com/jdecked/twemoji
+metro-bus	bus	1f68c.svg	CC BY 4.0	Twemoji (Twitter, Inc. og andre bidragsytere)	https://github.com/jdecked/twemoji
+metro-tram	tram	1f68b.svg	CC BY 4.0	Twemoji (Twitter, Inc. og andre bidragsytere)	https://github.com/jdecked/twemoji
+metro-station	station	1f689.svg	CC BY 4.0	Twemoji (Twitter, Inc. og andre bidragsytere)	https://github.com/jdecked/twemoji
+metro-arret	arrêt	1f68f.svg	CC BY 4.0	Twemoji (Twitter, Inc. og andre bidragsytere)	https://github.com/jdecked/twemoji
+is-glace	glace	1f368.svg	CC BY 4.0	Twemoji (Twitter, Inc. og andre bidragsytere)	https://github.com/jdecked/twemoji
+is-cornet	cornet	1f366.svg	CC BY 4.0	Twemoji (Twitter, Inc. og andre bidragsytere)	https://github.com/jdecked/twemoji
+is-boule	boule	26aa.svg	CC BY 4.0	Twemoji (Twitter, Inc. og andre bidragsytere)	https://github.com/jdecked/twemoji
+is-pot	pot	1f963.svg	CC BY 4.0	Twemoji (Twitter, Inc. og andre bidragsytere)	https://github.com/jdecked/twemoji
+is-chocolat	chocolat	1f36b.svg	CC BY 4.0	Twemoji (Twitter, Inc. og andre bidragsytere)	https://github.com/jdecked/twemoji
+is-vanille	vanille	1f33c.svg	CC BY 4.0	Twemoji (Twitter, Inc. og andre bidragsytere)	https://github.com/jdecked/twemoji
+is-fraise	fraise	1f353.svg	CC BY 4.0	Twemoji (Twitter, Inc. og andre bidragsytere)	https://github.com/jdecked/twemoji

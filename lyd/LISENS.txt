@@ -218,3 +218,72 @@ casserole	LL-Q150 (fra)-Lepticed7-casserole.wav	CC BY-SA 4.0
 cuillère	LL-Q150 (fra)-Poslovitch-cuillère.wav	CC0
 tarte	LL-Q150 (fra)-Poslovitch-tarte.wav	CC0
 confiture	LL-Q150 (fra)-Lepticed7-confiture.wav	CC BY-SA 4.0
+une	File:LL-Q150 (fra)-Poslovitch-une.wav	CC0
+des	File:LL-Q150 (fra)-Poslovitch-des.wav	CC0
+le	File:LL-Q150 (fra)-Poslovitch-le.wav	CC0
+dans	File:LL-Q150 (fra)-Lepticed7-dans.wav	CC BY-SA 4.0
+la	File:LL-Q150 (fra)-Poslovitch-la.wav	CC0
+les	File:LL-Q150 (fra)-Poslovitch-les.wav	CC0
+de	File:LL-Q150 (fra)-Poslovitch-de.wav	CC0
+poires	File:LL-Q150 (fra)-DenisdeShawi-poires.wav	CC BY-SA 4.0
+feuilles	File:LL-Q150 (fra)-0x010C-feuilles.wav	CC BY-SA 4.0
+vais	File:LL-Q150 (fra)-Poslovitch-vais.wav	CC0
+vas	File:LL-Q150 (fra)-Poslovitch-vas.wav	CC0
+va	File:LL-Q150 (fra)-Poslovitch-va.wav	CC0
+prends	File:LL-Q150 (fra)-Poslovitch-prends.wav	CC0
+prend	File:LL-Q150 (fra)-Poslovitch-prend.wav	CC0
+arrive	File:LL-Q150 (fra)-Poslovitch-arrive.wav	CC0
+arrives	File:LL-Q150 (fra)-Poslovitch-arrives.wav	CC0
+pars	File:LL-Q150 (fra)-Poslovitch-pars.wav	CC0
+part	File:LL-Q150 (fra)-Poslovitch-part.wav	CC0
+allons	File:LL-Q150 (fra)-Poslovitch-allons.wav	CC0
+allez	File:LL-Q150 (fra)-Poslovitch-allez.wav	CC0
+vont	File:LL-Q150 (fra)-Poslovitch-vont.wav	CC0
+prenons	File:LL-Q150 (fra)-Poslovitch-prenons.wav	CC0
+prenez	File:LL-Q150 (fra)-Poslovitch-prenez.wav	CC0
+prennent	File:LL-Q150 (fra)-Poslovitch-prennent.wav	CC0
+arrivons	File:LL-Q150 (fra)-Poslovitch-arrivons.wav	CC0
+arrivez	File:LL-Q150 (fra)-Poslovitch-arrivez.wav	CC0
+arrivent	File:LL-Q150 (fra)-Poslovitch-arrivent.wav	CC0
+partons	File:LL-Q150 (fra)-Poslovitch-partons.wav	CC0
+partez	File:LL-Q150 (fra)-Poslovitch-partez.wav	CC0
+partent	File:LL-Q150 (fra)-Poslovitch-partent.wav	CC0
+métro	File:LL-Q150 (fra)-Poslovitch-métro.wav	CC0
+bus	File:LL-Q150 (fra)-Lepticed7-bus.wav	CC BY-SA 4.0
+tram	File:LL-Q150 (fra)-Poslovitch-tram.wav	CC0
+station	File:LL-Q150 (fra)-Poslovitch-station.wav	CC0
+arrêt	File:LL-Q150 (fra)-Lepticed7-arrêt.wav	CC BY-SA 4.0
+en	File:LL-Q150 (fra)-Lepticed7-en.wav	CC BY-SA 4.0
+route	File:LL-Q150 (fra)-Lepticed7-route.wav	CC BY-SA 4.0
+pour	File:LL-Q150 (fra)-Poslovitch-pour.wav	CC0
+aller	File:LL-Q150 (fra)-Lepticed7-aller.wav	CC BY-SA 4.0
+au	File:LL-Q150 (fra)-DSwissK-au.wav	CC BY-SA 4.0
+travail	File:LL-Q150 (fra)-Poslovitch-travail.wav	CC0
+à	File:LL-Q150 (fra)-Lepticed7-à.wav	CC BY-SA 4.0
+prochaine	File:LL-Q150 (fra)-Poslovitch-prochaine.wav	CC0
+retard	File:LL-Q150 (fra)-Poslovitch-retard.wav	CC0
+maintenant	File:LL-Q150 (fra)-Lepticed7-maintenant.wav	CC BY-SA 4.0
+quand	File:LL-Q150 (fra)-Lepticed7-quand.wav	CC BY-SA 4.0
+bientôt	File:LL-Q150 (fra)-Lepticed7-bientôt.wav	CC BY-SA 4.0
+as	File:LL-Q150 (fra)-Poslovitch-as.wav	CC0
+glace	File:LL-Q150 (fra)-Lepticed7-glace.wav	CC BY-SA 4.0
+cornet	File:LL-Q150 (fra)-Poslovitch-cornet.wav	CC0
+boule	File:LL-Q150 (fra)-Poslovitch-boule.wav	CC0
+pot	File:LL-Q150 (fra)-Poslovitch-pot.wav	CC0
+chocolat	File:LL-Q150 (fra)-Lepticed7-chocolat.wav	CC BY-SA 4.0
+vanille	File:LL-Q150 (fra)-Poslovitch-vanille.wav	CC0
+fraise	File:LL-Q150 (fra)-Poslovitch-fraise.wav	CC0
+bonjour	File:LL-Q150 (fra)-Poslovitch-bonjour.wav	CC0
+voudrais	File:LL-Q150 (fra)-Poslovitch-voudrais.wav	CC0
+et	File:LL-Q150 (fra)-Lepticed7-et.wav	CC BY-SA 4.0
+ou	File:LL-Q150 (fra)-Poslovitch-ou.wav	CC0
+sur	File:LL-Q150 (fra)-Poslovitch-sur.wav	CC0
+place	File:LL-Q150 (fra)-Lepticed7-place.wav	CC BY-SA 4.0
+emporter	File:LL-Q150 (fra)-Lepticed7-emporter.wav	CC0
+c'est	File:LL-Q150 (fra)-Poslovitch-c'est.wav	CC0
+mon	File:LL-Q150 (fra)-Poslovitch-mon.wav	CC0
+mari	File:LL-Q150 (fra)-Lepticed7-mari.wav	CC BY-SA 4.0
+combien	File:LL-Q150 (fra)-Lepticed7-combien.wav	CC BY-SA 4.0
+merci	File:LL-Q150 (fra)-XANA000-merci.wav	CC0
+beaucoup	File:LL-Q150 (fra)-Lepticed7-beaucoup.wav	CC BY-SA 4.0
+moi	File:LL-Q150 (fra)-Poslovitch-moi.wav	CC0

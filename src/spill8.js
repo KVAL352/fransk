@@ -6,8 +6,11 @@
 (function () {
   // ?pakke=host: verbtrinnet i høstpakken (8 verb, nivå etter person, egen fremgang). Se PLAN-host.md.
   var PAKKE = null;
-  try { PAKKE = new URLSearchParams(window.location.search).get("pakke") === "host" ? "host" : null; } catch (e) { PAKKE = null; }
-  var SPILL = PAKKE ? "hostverb" : "spill8";
+  try {
+    var pakkeParam = new URLSearchParams(window.location.search).get("pakke");
+    PAKKE = pakkeParam === "host" || pakkeParam === "metro" || pakkeParam === "is" ? pakkeParam : null;
+  } catch (e) { PAKKE = null; }
+  var SPILL = PAKKE ? PAKKE + "verb" : "spill8";
   window.Tekster.init();
   var V = PAKKE ? window.Verb.pakke(PAKKE) : window.Verb;
   var t = window.Tekster.t;
@@ -64,7 +67,11 @@
       regelnavn_geons: "nous mangeons (-ger)",
       regelnavn_appeler: "appeler",
       regelnavn_etre: "être",
-      regelnavn_avoir: "avoir"
+      regelnavn_avoir: "avoir",
+      regelnavn_aller: "aller",
+      regelnavn_prendre: "prendre",
+      regelnavn_descendre: "descendre",
+      regelnavn_partir: "partir"
     },
     en: {
       tittel: "French: conjugate the verb",
@@ -106,27 +113,36 @@
       regelnavn_geons: "nous mangeons (-ger)",
       regelnavn_appeler: "appeler",
       regelnavn_etre: "être",
-      regelnavn_avoir: "avoir"
+      regelnavn_avoir: "avoir",
+      regelnavn_aller: "aller",
+      regelnavn_prendre: "prendre",
+      regelnavn_descendre: "descendre",
+      regelnavn_partir: "partir"
     }
   };
-  // Høstpakken: to nivåer og tilbake til stien i stedet for menyen.
-  var TEKST_PAKKE = {
-    nb: {
-      tittel: "Fransk: høstverb",
-      introAlle: "Begge nivåene er lært. Nå blandes alle formene.",
-      feiringSist: "Du har lært begge nivåene. Trinn 2, høstord, er åpent.",
-      videreHost: "Tilbake til høstpakken",
-      lenkeMeny: "Til høstpakken"
+  // Pakkene: to nivåer og tilbake til stien i stedet for menyen.
+  var PAKKE_TEKST = {
+    host: {
+      href: "hostpakke.html",
+      nb: { tittel: "Fransk: høstverb", feiringSist: "Du har lært begge nivåene. Trinn 2, høstord, er åpent.", videreHost: "Tilbake til høstpakken", lenkeMeny: "Til høstpakken" },
+      en: { tittel: "French: autumn verbs", feiringSist: "You have learned both levels. Step 2, autumn words, is open.", videreHost: "Back to the autumn pack", lenkeMeny: "Back to the autumn pack" }
     },
-    en: {
-      tittel: "French: autumn verbs",
-      introAlle: "Both levels are learned. Now all the forms are mixed.",
-      feiringSist: "You have learned both levels. Step 2, autumn words, is open.",
-      videreHost: "Back to the autumn pack",
-      lenkeMeny: "Back to the autumn pack"
+    is: {
+      href: "snakkepakke.html?situasjon=is",
+      nb: { tittel: "Fransk: verb i isbutikken", feiringSist: "Du har lært begge nivåene. Nå kan du øve ordene og setningene i isbutikken.", videreHost: "Tilbake til isbutikken", lenkeMeny: "Til isbutikken" },
+      en: { tittel: "French: verbs at the ice cream shop", feiringSist: "You have learned both levels. Now you can practise the words and sentences at the ice cream shop.", videreHost: "Back to the ice cream shop", lenkeMeny: "Back to the ice cream shop" }
+    },
+    metro: {
+      href: "snakkepakke.html",
+      nb: { tittel: "Fransk: verb på vei", feiringSist: "Du har lært begge nivåene. Nå kan du øve ordene og setningene på vei.", videreHost: "Tilbake til «på vei»", lenkeMeny: "Til «på vei»" },
+      en: { tittel: "French: verbs on the way", feiringSist: "You have learned both levels. Now you can practise the words and sentences on the way.", videreHost: "Back to “on the way”", lenkeMeny: "Back to “on the way”" }
     }
   };
-  if (PAKKE) ["nb", "en"].forEach(function (s) { Object.keys(TEKST_PAKKE[s]).forEach(function (k) { TEKST[s][k] = TEKST_PAKKE[s][k]; }); });
+  if (PAKKE) ["nb", "en"].forEach(function (s) {
+    var felles = { introAlle: s === "nb" ? "Begge nivåene er lært. Nå blandes alle formene." : "Both levels are learned. Now all the forms are mixed." };
+    Object.keys(felles).forEach(function (k) { TEKST[s][k] = felles[k]; });
+    Object.keys(PAKKE_TEKST[PAKKE][s]).forEach(function (k) { TEKST[s][k] = PAKKE_TEKST[PAKKE][s][k]; });
+  });
   var SPRAK = window.Tekster.kode() === "nb" ? "nb" : "en";
   function s8(nokkel, verdier) {
     var tekst = TEKST[SPRAK][nokkel];
@@ -140,8 +156,8 @@
   $("h1").textContent = s8("tittel");
   $("intro").textContent = s8("intro");
   $("menyLenke").textContent = s8("lenkeMeny");
-  if (PAKKE) $("menyLenke").href = "hostpakke.html";
-  var VIDERE_HREF = PAKKE ? "hostpakke.html" : "spill9.html";
+  if (PAKKE) $("menyLenke").href = PAKKE_TEKST[PAKKE].href;
+  var VIDERE_HREF = PAKKE ? PAKKE_TEKST[PAKKE].href : "spill9.html";
   $("kredittLenke").textContent = s8("kreditt");
 
   var kortEl = $("kort");

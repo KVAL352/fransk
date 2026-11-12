@@ -6,9 +6,17 @@
 // Er alle seks temaene lært, blandes alle 39 ordene.
 
 (function () {
-  var SPILL = "spill9";
+  // ?pakke=metro: «Ord på vei» i snakkepakken (src/metro-ord.js, egen fremgang, ingen lås).
+  var METRO = false;
+  var IS = false; // ?pakke=is: «Ord i isbutikken» (src/is-ord.js, fremgang isord)
+  try {
+    var pakkeP = new URLSearchParams(window.location.search).get("pakke");
+    METRO = pakkeP === "metro" || pakkeP === "is";
+    IS = pakkeP === "is";
+  } catch (e) { METRO = false; IS = false; }
+  var SPILL = IS ? "isord" : METRO ? "metroord" : "spill9";
   window.Tekster.init();
-  var H = window.Host;
+  var H = IS ? window.IsOrd : METRO ? window.MetroOrd : window.Host;
   var O = window.Ord;
   var t = window.Tekster.t;
   var TEMA = null; // temaet hun er på (objekt fra Host.TEMAER), null når alle er lært og alt blandes
@@ -17,7 +25,7 @@
   var temaKlart = false; // temaet ble nettopp ferdig: neste trykk på Neste åpner det neste
   var SKRIVE_BOKS = 3; // fra og med denne boksen skriver hun svaret selv
   var FERDIG_REKKE = 3; // så mange riktige på rad (første forsøk) på samme ord og ordet er ferdig, uansett boks
-  var TEMAIKON = ["🌦️", "🌲", "🧥", "🦊", "🍎", "🍳"];
+  var TEMAIKON = IS ? ["🍨"] : METRO ? ["🚇"] : ["🌦️", "🌲", "🧥", "🦊", "🍎", "🍳"];
 
   // Tekster for dette spillet. Andre språk enn norsk viser engelsk.
   var TEKST = {
@@ -90,6 +98,19 @@
       bekreft: "Reset progress in this game?"
     }
   };
+  if (IS) {
+    var IS_TEKST = {
+      nb: { tittel: "Fransk: ord i isbutikken", feiringSist: "Du har lært alle ordene i isbutikken. Nå får du dem blandet.", lenkeMeny: "Til isbutikken", lastLenke: "Til isbutikken", viderePakke: "Til isbutikken" },
+      en: { tittel: "French: words at the ice cream shop", feiringSist: "You have learned all the words at the ice cream shop. Now you get them mixed together.", lenkeMeny: "Back to the ice cream shop", lastLenke: "Back to the ice cream shop", viderePakke: "Back to the ice cream shop" }
+    };
+    ["nb", "en"].forEach(function (k) { Object.keys(IS_TEKST[k]).forEach(function (n) { TEKST[k][n] = IS_TEKST[k][n]; }); });
+  } else if (METRO) {
+    var METRO_TEKST = {
+      nb: { tittel: "Fransk: ord på vei", feiringSist: "Du har lært alle ordene på vei. Nå får du dem blandet.", lenkeMeny: "Til «på vei»", lastLenke: "Til «på vei»", viderePakke: "Til «på vei»" },
+      en: { tittel: "French: words on the way", feiringSist: "You have learned all the words on the way. Now you get them mixed together.", lenkeMeny: "Back to “on the way”", lastLenke: "Back to “on the way”", viderePakke: "Back to “on the way”" }
+    };
+    ["nb", "en"].forEach(function (k) { Object.keys(METRO_TEKST[k]).forEach(function (n) { TEKST[k][n] = METRO_TEKST[k][n]; }); });
+  }
   var SPRAK = window.Tekster.kode() === "nb" ? "nb" : "en";
   function s9(nokkel, verdier) {
     var tekst = TEKST[SPRAK][nokkel];
@@ -102,6 +123,7 @@
   document.title = s9("tittel");
   $("h1").textContent = s9("tittel");
   $("menyLenke").textContent = s9("lenkeMeny");
+  if (METRO) $("menyLenke").href = IS ? "snakkepakke.html?situasjon=is" : "snakkepakke.html";
   $("kredittLenke").textContent = s9("kreditt");
 
   var kortEl = $("kort");
@@ -364,7 +386,7 @@
         window.Feiring.vis({
           tittel: s9("feiringTittel", { tema: temaNavn(ferdigTema) }),
           tekst: neste ? s9("feiringTekst", { neste: temaNavn(neste) }) : s9("feiringSist"),
-          videre: neste ? null : { tekst: s9("viderePakke"), href: "hostpakke.html" }, etterpaa: nesteKnapp,
+          videre: neste ? null : { tekst: s9("viderePakke"), href: IS ? "snakkepakke.html?situasjon=is" : METRO ? "snakkepakke.html" : "hostpakke.html" }, etterpaa: nesteKnapp,
           knapp: neste ? s9("feiringNeste", { neste: temaNavn(neste) }) : s9("feiringBland"),
           vedLukk: function () { if (temaKlart) nesteKnapp.click(); }
         });
@@ -441,7 +463,7 @@
   // Trinn 2 i høstpakken: låst til verbtrinnet er ferdig. ?test=1 hopper over låsen.
   var test = false;
   try { test = new URLSearchParams(window.location.search).get("test") === "1"; } catch (e) { test = false; }
-  if (!test && !window.HostPakke.verbFerdig()) {
+  if (!METRO && !test && !window.HostPakke.verbFerdig()) {
     $("start").hidden = true;
     $("kart").hidden = true;
     $("temalinje").hidden = true;
