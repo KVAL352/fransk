@@ -54,6 +54,7 @@
     setninger: function () { return [{ spill: "spill3", min: 1, maks: window.Setninger.antallNokler(harProfil()) }]; },
     artikler: function () { return [{ spill: "spill5", min: 1, maks: window.Ord.ANTALL }, { spill: "spill6", min: 1, maks: window.Ord.ANTALL }]; },
     verb: function () { return [{ spill: "spill8", min: 1, maks: window.Verb.LISTE.length }]; },
+    nektelse: function () { return [{ spill: "nektelse", min: 1, maks: window.Nektelse.ANTALL }]; },
     // Samme regel som stien på hostpakke.html (src/hostpakke.js): har hun lært alle ordene i spill 9 eller alle
     // verbene i spill 8, regnes verbtrinnet som ferdig, selv om de 48 pakkeformene ikke er øvd hver for seg.
     host: function () {
