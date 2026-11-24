@@ -287,3 +287,43 @@ combien	File:LL-Q150 (fra)-Lepticed7-combien.wav	CC BY-SA 4.0
 merci	File:LL-Q150 (fra)-XANA000-merci.wav	CC0
 beaucoup	File:LL-Q150 (fra)-Lepticed7-beaucoup.wav	CC BY-SA 4.0
 moi	File:LL-Q150 (fra)-Poslovitch-moi.wav	CC0
+maison	File:LL-Q150 (fra)-Poslovitch-maison.wav	CC0
+ville	File:LL-Q150 (fra)-Poslovitch-ville.wav	CC0
+pays	File:LL-Q150 (fra)-Poslovitch-pays.wav	CC0
+langue	File:LL-Q150 (fra)-Lepticed7-langue.wav	CC BY-SA 4.0
+ami	File:LL-Q150 (fra)-Poslovitch-ami.wav	CC0
+famille	File:LL-Q150 (fra)-Lepticed7-famille.wav	CC BY-SA 4.0
+ça	File:LL-Q150 (fra)-Poslovitch-ça.wav	CC0
+très	File:LL-Q150 (fra)-Poslovitch-très.wav	CC0
+bien	File:LL-Q150 (fra)-Lepticed7-bien.wav	CC BY-SA 4.0
+Norvège	File:LL-Q150 (fra)-Poslovitch-Norvège.wav	CC0
+Bruxelles	File:LL-Q150 (fra)-Poslovitch-Bruxelles.wav	CC0
+peu	File:LL-Q150 (fra)-Lepticed7-peu.wav	CC BY-SA 4.0
+français	File:LL-Q150 (fra)-Lepticed7-français.wav	CC BY-SA 4.0
+ne	File:LL-Q150 (fra)-Poslovitch-ne.wav	CC0
+comprends	File:LL-Q150 (fra)-Poslovitch-comprends.wav	CC0
+pas	File:LL-Q150 (fra)-Lepticed7-pas.wav	CC BY-SA 4.0
+anglais	File:LL-Q150 (fra)-Poslovitch-anglais.wav	CC0
+plus	File:LL-Q150 (fra)-Poslovitch-plus.wav	CC0
+lentement	File:LL-Q150 (fra)-Poslovitch-lentement.wav	CC0
+d'ici	File:LL-Q150 (fra)-Lepticed7-d’ici.wav	CC BY-SA 4.0
+enchantée	File:LL-Q150 (fra)-XANA000-enchantée.wav	CC0
+bonne	File:LL-Q150 (fra)-Poslovitch-bonne.wav	CC0
+journée	File:LL-Q150 (fra)-Poslovitch-journée.wav	CC0
+lait	File:LL-Q150 (fra)-Lepticed7-lait.wav	CC BY-SA 4.0
+fromage	File:LL-Q150 (fra)-Poslovitch-fromage.wav	CC0
+eau	File:LL-Q150 (fra)-Lepticed7-eau.wav	CC BY-SA 4.0
+sac	File:LL-Q150 (fra)-Poslovitch-sac.wav	CC0
+madame	File:LL-Q150 (fra)-Poslovitch-madame.wav	CC0
+du	File:LL-Q150 (fra)-Poslovitch-du.wav	CC0
+cherche	File:LL-Q150 (fra)-Lepticed7-cherche.wav	CC BY-SA 4.0
+avec	File:LL-Q150 (fra)-Lepticed7-avec.wav	CC BY-SA 4.0
+ce	File:LL-Q150 (fra)-Poslovitch-ce.wav	CC0
+sera	File:LL-Q150 (fra)-Poslovitch-sera.wav	CC0
+tout	File:LL-Q150 (fra)-Lepticed7-tout.wav	CC BY-SA 4.0
+peux	File:LL-Q150 (fra)-Poslovitch-peux.wav	CC0
+payer	File:LL-Q150 (fra)-Poslovitch-payer.wav	CC0
+par	File:LL-Q150 (fra)-Poslovitch-par.wav	CC0
+carte	File:LL-Q150 (fra)-Lepticed7-carte.wav	CC BY-SA 4.0
+voilà	File:LL-Q150 (fra)-Poslovitch-voilà.wav	CC0
+revoir	File:LL-Q150 (fra)-Poslovitch-revoir.wav	CC0

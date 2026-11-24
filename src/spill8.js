@@ -8,7 +8,7 @@
   var PAKKE = null;
   try {
     var pakkeParam = new URLSearchParams(window.location.search).get("pakke");
-    PAKKE = pakkeParam === "host" || pakkeParam === "metro" || pakkeParam === "is" ? pakkeParam : null;
+    PAKKE = pakkeParam === "host" || window.Situasjoner.hent(pakkeParam) ? pakkeParam : null;
   } catch (e) { PAKKE = null; }
   var SPILL = PAKKE ? PAKKE + "verb" : "spill8";
   window.Tekster.init();
@@ -127,17 +127,13 @@
       nb: { tittel: "Fransk: høstverb", feiringSist: "Du har lært begge nivåene. Trinn 2, høstord, er åpent.", videreHost: "Tilbake til høstpakken", lenkeMeny: "Til høstpakken" },
       en: { tittel: "French: autumn verbs", feiringSist: "You have learned both levels. Step 2, autumn words, is open.", videreHost: "Back to the autumn pack", lenkeMeny: "Back to the autumn pack" }
     },
-    is: {
-      href: "snakkepakke.html?situasjon=is",
-      nb: { tittel: "Fransk: verb i isbutikken", feiringSist: "Du har lært begge nivåene. Nå kan du øve ordene og setningene i isbutikken.", videreHost: "Tilbake til isbutikken", lenkeMeny: "Til isbutikken" },
-      en: { tittel: "French: verbs at the ice cream shop", feiringSist: "You have learned both levels. Now you can practise the words and sentences at the ice cream shop.", videreHost: "Back to the ice cream shop", lenkeMeny: "Back to the ice cream shop" }
-    },
-    metro: {
-      href: "snakkepakke.html",
-      nb: { tittel: "Fransk: verb på vei", feiringSist: "Du har lært begge nivåene. Nå kan du øve ordene og setningene på vei.", videreHost: "Tilbake til «på vei»", lenkeMeny: "Til «på vei»" },
-      en: { tittel: "French: verbs on the way", feiringSist: "You have learned both levels. Now you can practise the words and sentences on the way.", videreHost: "Back to “on the way”", lenkeMeny: "Back to “on the way”" }
-    }
   };
+  // Situasjonene i snakkepakken (src/situasjoner.js).
+  window.Situasjoner.NAVN.forEach(function (navn) {
+    var sit = window.Situasjoner.SITUASJONER[navn];
+    function tekst(k) { return { tittel: sit[k].verbTittel, feiringSist: sit[k].verbSist, videreHost: sit[k].tilbake, lenkeMeny: sit[k].lenke }; }
+    PAKKE_TEKST[navn] = { href: window.Situasjoner.hrefPakke(sit), nb: tekst("nb"), en: tekst("en") };
+  });
   if (PAKKE) ["nb", "en"].forEach(function (s) {
     var felles = { introAlle: s === "nb" ? "Begge nivåene er lært. Nå blandes alle formene." : "Both levels are learned. Now all the forms are mixed." };
     Object.keys(felles).forEach(function (k) { TEKST[s][k] = felles[k]; });

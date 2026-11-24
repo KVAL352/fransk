@@ -271,6 +271,24 @@
         { nb: "nous, vous, ils og elles", en: "nous, vous, ils and elles" },
       ],
     },
+    // Snakkepakken, ute blant folk: 5 verb × 6 personer = 30 former. Bare verb som finnes fra før.
+    folk: {
+      verb: ["être", "habiter", "parler", "aller", "aimer"],
+      personer: [[0, 1, 2], [3, 4, 5]],
+      nivaaTekst: [
+        { nb: "je, tu, il og elle", en: "je, tu, il and elle" },
+        { nb: "nous, vous, ils og elles", en: "nous, vous, ils and elles" },
+      ],
+    },
+    // Snakkepakken, butikken: 4 verb × 6 personer = 24 former. Bare verb som finnes fra før (vouloir, chercher, payer mangler).
+    butikk: {
+      verb: ["prendre", "avoir", "aller", "aimer"],
+      personer: [[0, 1, 2], [3, 4, 5]],
+      nivaaTekst: [
+        { nb: "je, tu, il og elle", en: "je, tu, il and elle" },
+        { nb: "nous, vous, ils og elles", en: "nous, vous, ils and elles" },
+      ],
+    },
     // Snakkepakken, situasjonen på vei (spill 11): 6 verb × 6 personer = 36 former.
     metro: {
       verb: ["être", "aller", "prendre", "arriver", "descendre", "partir"],

@@ -12,17 +12,19 @@
 
 (function () {
   window.Tekster.init();
-  var IS = false; // ?pakke=is: isbutikken (src/is.js, egen fremgang spill12)
-  try { IS = new URLSearchParams(window.location.search).get("pakke") === "is"; } catch (e) { IS = false; }
-  var S = IS ? window.Is : window.Metro;
+  // ?pakke=<navn> (src/situasjoner.js): setningene og fremgangsnøkkelen til situasjonen. Uten gyldig verdi: «på vei».
+  var Sx = window.Situasjoner;
+  var SIT = Sx.SITUASJONER.metro;
+  try { SIT = Sx.hent(new URLSearchParams(window.location.search).get("pakke")) || SIT; } catch (e) { /* standard */ }
+  var S = Sx.setnMod(SIT);
+  var PAKKE_HREF = Sx.hrefPakke(SIT);
   var N = S.ANTALL;
-  var SPILL = IS ? "spill12" : "spill11";
+  var SPILL = SIT.setnSpill;
   var FERDIG_ANDEL = 0.95;
 
   var TEKST = {
     nb: {
-      tittel: "Fransk: på vei (metro, buss, trikk)",
-      intro: "Du forteller en venn at du er på vei. Først setter du ordene i riktig rekkefølge, så skriver du setningene, og til slutt sier du dem høyt. Setningene er utkast og er ikke lest av noen som kan fransk godt.",
+      introHale: "Først setter du ordene i riktig rekkefølge, så skriver du setningene, og til slutt sier du dem høyt. Setningene er utkast og er ikke lest av noen som kan fransk godt.",
       del1: "Del 1: rekkefølge", del2: "Del 2: skriv", del3: "Del 3: si høyt",
       delTekst: "{del}: {n} av {total} setninger ferdige",
       oppgave1: "Sett ordene i riktig rekkefølge.",
@@ -44,14 +46,12 @@
       bra3: "Bra!",
       feiring1Tittel: "Del 1 er ferdig!", feiring1Tekst: "Nå skriver du setningene selv.", feiring1Knapp: "Til del 2",
       feiring2Tittel: "Del 2 er ferdig!", feiring2Tekst: "Nå sier du setningene høyt.", feiring2Knapp: "Til del 3",
-      feiring3Tittel: "På vei er ferdig!", feiring3Tekst: "Du har bygget, skrevet og sagt alle setningene.", feiring3Knapp: "Øv videre",
+      feiring3Tekst: "Du har bygget, skrevet og sagt alle setningene.", feiring3Knapp: "Øv videre",
       alleFerdig: "Alle delene er ferdige. Nå blandes alle setningene.",
-      lenkeMeny: "Til «på vei»",
       bekreft: "Nullstille fremgangen i dette spillet?"
     },
     en: {
-      tittel: "French: on the way (metro, bus, tram)",
-      intro: "You tell a friend you are on your way. First you put the words in the right order, then you write the sentences, and last you say them out loud. The sentences are drafts and have not been checked by anyone who knows French well.",
+      introHale: "First you put the words in the right order, then you write the sentences, and last you say them out loud. The sentences are drafts and have not been checked by anyone who knows French well.",
       del1: "Part 1: word order", del2: "Part 2: write", del3: "Part 3: say it",
       delTekst: "{del}: {n} of {total} sentences done",
       oppgave1: "Put the words in the right order.",
@@ -73,9 +73,8 @@
       bra3: "Good!",
       feiring1Tittel: "Part 1 is done!", feiring1Tekst: "Now you write the sentences yourself.", feiring1Knapp: "On to part 2",
       feiring2Tittel: "Part 2 is done!", feiring2Tekst: "Now you say the sentences out loud.", feiring2Knapp: "On to part 3",
-      feiring3Tittel: "On the way is done!", feiring3Tekst: "You have built, written and said all the sentences.", feiring3Knapp: "Keep practising",
+      feiring3Tekst: "You have built, written and said all the sentences.", feiring3Knapp: "Keep practising",
       alleFerdig: "All parts are done. Now all the sentences are mixed.",
-      lenkeMeny: "Back to “on the way”",
       bekreft: "Reset progress in this game?"
     }
   };
@@ -88,17 +87,17 @@
   }
   function $(id) { return document.getElementById(id); }
 
-  if (IS) {
-    var IS_TEKST = {
-      nb: { tittel: "Fransk: i isbutikken", intro: "Du kjøper is til deg selv og de du er sammen med. Først setter du ordene i riktig rekkefølge, så skriver du setningene, og til slutt sier du dem høyt. Setningene er utkast og er ikke lest av noen som kan fransk godt.", feiring3Tittel: "Isbutikken er ferdig!", lenkeMeny: "Til isbutikken" },
-      en: { tittel: "French: at the ice cream shop", intro: "You buy ice cream for yourself and the people you are with. First you put the words in the right order, then you write the sentences, and last you say them out loud. The sentences are drafts and have not been checked by anyone who knows French well.", feiring3Tittel: "The ice cream shop is done!", lenkeMeny: "Back to the ice cream shop" }
-    };
-    ["nb", "en"].forEach(function (k) { Object.keys(IS_TEKST[k]).forEach(function (n) { TEKST[k][n] = IS_TEKST[k][n]; }); });
-  }
+  // Tekster som hører til situasjonen (src/situasjoner.js).
+  ["nb", "en"].forEach(function (k) {
+    TEKST[k].tittel = SIT[k].setnTittel;
+    TEKST[k].intro = SIT[k].setnIntro + " " + TEKST[k].introHale;
+    TEKST[k].feiring3Tittel = SIT[k].setnFerdig;
+    TEKST[k].lenkeMeny = SIT[k].lenke;
+  });
   document.title = s("tittel");
   $("h1").textContent = s("tittel");
   $("menyLenke").textContent = s("lenkeMeny");
-  $("menyLenke").href = IS ? "snakkepakke.html?situasjon=is" : "snakkepakke.html";
+  $("menyLenke").href = PAKKE_HREF;
   $("intro").textContent = s("intro");
   $("tips").textContent = s("tips");
   $("hor").textContent = s("hor");

@@ -68,3 +68,17 @@ is-pot	pot	1f963.svg	CC BY 4.0	Twemoji (Twitter, Inc. og andre bidragsytere)	htt
 is-chocolat	chocolat	1f36b.svg	CC BY 4.0	Twemoji (Twitter, Inc. og andre bidragsytere)	https://github.com/jdecked/twemoji
 is-vanille	vanille	1f33c.svg	CC BY 4.0	Twemoji (Twitter, Inc. og andre bidragsytere)	https://github.com/jdecked/twemoji
 is-fraise	fraise	1f353.svg	CC BY 4.0	Twemoji (Twitter, Inc. og andre bidragsytere)	https://github.com/jdecked/twemoji
+folk-maison	maison	1f3e0.svg	CC BY 4.0	Twemoji (Twitter, Inc. og andre bidragsytere)	https://github.com/jdecked/twemoji
+folk-ville	ville	1f3d9.svg	CC BY 4.0	Twemoji (Twitter, Inc. og andre bidragsytere)	https://github.com/jdecked/twemoji
+folk-pays	pays	1f30d.svg	CC BY 4.0	Twemoji (Twitter, Inc. og andre bidragsytere)	https://github.com/jdecked/twemoji
+folk-langue	langue	1f5e3.svg	CC BY 4.0	Twemoji (Twitter, Inc. og andre bidragsytere)	https://github.com/jdecked/twemoji
+folk-ami	ami	1f91d.svg	CC BY 4.0	Twemoji (Twitter, Inc. og andre bidragsytere)	https://github.com/jdecked/twemoji
+folk-ecole	école	1f3eb.svg	CC BY 4.0	Twemoji (Twitter, Inc. og andre bidragsytere)	https://github.com/jdecked/twemoji
+folk-famille	famille	1f46a.svg	CC BY 4.0	Twemoji (Twitter, Inc. og andre bidragsytere)	https://github.com/jdecked/twemoji
+butikk-pain	pain	1f35e.svg	CC BY 4.0	Twemoji (Twitter, Inc. og andre bidragsytere)	https://github.com/jdecked/twemoji
+butikk-lait	lait	1f95b.svg	CC BY 4.0	Twemoji (Twitter, Inc. og andre bidragsytere)	https://github.com/jdecked/twemoji
+butikk-fromage	fromage	1f9c0.svg	CC BY 4.0	Twemoji (Twitter, Inc. og andre bidragsytere)	https://github.com/jdecked/twemoji
+butikk-pomme	pomme	1f34e.svg	CC BY 4.0	Twemoji (Twitter, Inc. og andre bidragsytere)	https://github.com/jdecked/twemoji
+butikk-eau	eau	1f4a7.svg	CC BY 4.0	Twemoji (Twitter, Inc. og andre bidragsytere)	https://github.com/jdecked/twemoji
+butikk-sac	sac	1f45c.svg	CC BY 4.0	Twemoji (Twitter, Inc. og andre bidragsytere)	https://github.com/jdecked/twemoji
+butikk-euro	euro	1f4b6.svg	CC BY 4.0	Twemoji (Twitter, Inc. og andre bidragsytere)	https://github.com/jdecked/twemoji
