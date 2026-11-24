@@ -1,8 +1,8 @@
 // Nivåvelger for spillene. Nivåene bygger på hverandre: nivå 2 tar med tallene fra nivå 1,
 // så ferdige tall blandes inn med de nye. Valget lagres per spill. Fremgangen ligger per tall
 // i src/fremgang.js og følger med på tvers av nivå.
-// Rekkefølgen er låst: spill 1 nivå 1, spill 2 nivå 1, spill 1 nivå 2, spill 2 nivå 2 og så videre.
-// Et steg åpnes når steget før er ferdig (alle tallene i nivået utlært i det spillet).
+// Alle nivåer er åpne i begge spillene (låsen mellom spill 1 og 2 fjernet 2026-11-22 etter ønske fra Kjersti).
+// Anbefalt rekkefølge, som «videre» peker på: spill 1 nivå 1, spill 2 nivå 1, spill 1 nivå 2 og så videre.
 
 (function () {
   var NIVAAER = [
@@ -28,16 +28,8 @@
     }
   }
 
-  function ferdig(spill, i) {
-    return window.Fremgang.alleUtlaert(spill, NIVAAER[i].min, NIVAAER[i].maks);
-  }
-
-  // Er nivå i (0-indeksert) åpent i dette spillet? Steget før må være ferdig.
-  function ledig(spill, i) {
-    if (testmodus()) return true;
-    if (spill === "spill1") return i === 0 || ferdig("spill2", i - 1);
-    return ferdig("spill1", i);
-  }
+  // Er nivå i (0-indeksert) åpent i dette spillet? Alltid ja siden 2026-11-22.
+  function ledig() { return true; }
 
   // Høyeste åpne nivå i spillet.
   function hoyesteLedige(spill) {
