@@ -268,7 +268,7 @@
     } else if (riktigForsteGang) {
       kortEl.classList.add("riktig-blink");
       // Som spill 8: en kort tone for hvert riktig svar, lysere jo nærmere setningen er ferdig.
-      if (window.Feiring.boksLyd) window.Feiring.boksLyd(andel());
+      if (window.Feiring.boksLyd) window.Feiring.boksLyd(andel(), 0.4);
     }
     tegnKortlinje();
     tegnTopp();

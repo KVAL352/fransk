@@ -92,10 +92,11 @@
   // Hver lyd er alltid et steg opp (to ulike toner), og stigen starter ikke lavere enn G4,
   // ellers høres den flat og feil ut.
   var STIGE = [392, 440, 523.25, 587.33, 659.25, 783.99]; // C-dur pentaton, G4 til G5
-  function boksLyd(andel) {
+  // demp er valgfri: 0..1 ganger volumet (nektelse bruker 0,4, Kjersti syntes den var høy der).
+  function boksLyd(andel, demp) {
     var a = Math.max(0, Math.min(1, andel || 0));
     var i = Math.min(STIGE.length - 2, Math.floor(a * (STIGE.length - 1)));
-    var volum = 0.09 + 0.06 * a; // litt sterkere jo nærmere målet
+    var volum = (0.09 + 0.06 * a) * (demp || 1); // litt sterkere jo nærmere målet
     spillNoter([[STIGE[i], 0, 0.1], [STIGE[i + 1], 0.08, 0.24]], volum, "sine");
   }
 
