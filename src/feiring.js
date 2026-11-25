@@ -100,6 +100,29 @@
     spillNoter([[STIGE[i], 0, 0.1], [STIGE[i + 1], 0.08, 0.24]], volum, "sine");
   }
 
+  // Dempet dunk for riktig svar i nektelse: «en basstromme med et teppe over» (Kjersti 2026-11-25).
+  // Lav sinustone som faller fra 110 til 45 Hz, lavpassfiltrert ved 220 Hz, borte etter 0,25 s.
+  function dunk() {
+    try {
+      var ctx = lyd();
+      if (!ctx) return;
+      if (ctx.state === "suspended") ctx.resume();
+      var t0 = ctx.currentTime + 0.02;
+      var o = ctx.createOscillator(), g = ctx.createGain(), f = ctx.createBiquadFilter();
+      o.type = "sine";
+      o.frequency.setValueAtTime(110, t0);
+      o.frequency.exponentialRampToValueAtTime(45, t0 + 0.15);
+      f.type = "lowpass";
+      f.frequency.value = 220;
+      g.gain.setValueAtTime(0.0001, t0);
+      g.gain.exponentialRampToValueAtTime(0.35, t0 + 0.012);
+      g.gain.exponentialRampToValueAtTime(0.0001, t0 + 0.25);
+      o.connect(f); f.connect(g); g.connect(ctx.destination);
+      o.start(t0);
+      o.stop(t0 + 0.3);
+    } catch (e) { /* lyd er et ekstralag */ }
+  }
+
   // Utlært: tre toner over boks 5.
   function utlaertLyd() {
     spillNoter([[1046.5, 0, 0.15], [1318.5, 0.1, 0.15], [1568, 0.2, 0.5]], 0.2);
@@ -198,6 +221,6 @@
 
   window.Feiring = {
     vis: vis, konfettiFra: konfettiFra, redusertBevegelse: redusertBevegelse,
-    boksLyd: boksLyd, utlaertLyd: utlaertLyd, milepaelLyd: milepaelLyd
+    boksLyd: boksLyd, dunk: dunk, utlaertLyd: utlaertLyd, milepaelLyd: milepaelLyd
   };
 })();
