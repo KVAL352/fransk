@@ -100,26 +100,30 @@
     spillNoter([[STIGE[i], 0, 0.1], [STIGE[i + 1], 0.08, 0.24]], volum, "sine");
   }
 
-  // Dempet dunk for riktig svar i nektelse: «en basstromme med et teppe over» (Kjersti 2026-11-25).
-  // Lav sinustone som faller fra 110 til 45 Hz, lavpassfiltrert ved 220 Hz, borte etter 0,25 s.
+  // Dempet, positiv lyd for riktig svar i nektelse. Kjersti 2026-11-25: dempet som «en basstromme med et teppe over»,
+  // men positiv (et fallende dunk ble aggressivt og negativt). To myke toner opp (C4 til G4), sinus,
+  // lavpassfiltrert ved 900 Hz, som en marimba med myke køller.
   function dunk() {
     try {
       var ctx = lyd();
       if (!ctx) return;
       if (ctx.state === "suspended") ctx.resume();
       var t0 = ctx.currentTime + 0.02;
-      var o = ctx.createOscillator(), g = ctx.createGain(), f = ctx.createBiquadFilter();
-      o.type = "sine";
-      o.frequency.setValueAtTime(110, t0);
-      o.frequency.exponentialRampToValueAtTime(45, t0 + 0.15);
+      var f = ctx.createBiquadFilter();
       f.type = "lowpass";
-      f.frequency.value = 220;
-      g.gain.setValueAtTime(0.0001, t0);
-      g.gain.exponentialRampToValueAtTime(0.35, t0 + 0.012);
-      g.gain.exponentialRampToValueAtTime(0.0001, t0 + 0.25);
-      o.connect(f); f.connect(g); g.connect(ctx.destination);
-      o.start(t0);
-      o.stop(t0 + 0.3);
+      f.frequency.value = 900;
+      f.connect(ctx.destination);
+      [[261.63, 0, 0.3], [392, 0.09, 0.4]].forEach(function (n) {
+        var o = ctx.createOscillator(), g = ctx.createGain();
+        o.type = "sine";
+        o.frequency.value = n[0];
+        g.gain.setValueAtTime(0.0001, t0 + n[1]);
+        g.gain.exponentialRampToValueAtTime(0.16, t0 + n[1] + 0.025);
+        g.gain.exponentialRampToValueAtTime(0.0001, t0 + n[1] + n[2]);
+        o.connect(g); g.connect(f);
+        o.start(t0 + n[1]);
+        o.stop(t0 + n[1] + n[2] + 0.05);
+      });
     } catch (e) { /* lyd er et ekstralag */ }
   }
 
